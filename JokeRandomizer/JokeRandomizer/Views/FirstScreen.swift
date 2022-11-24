@@ -10,12 +10,21 @@ import UIKit
 class FirstScreen: UIViewController {
 //MARK: - Property
     let nextButton = UIButton()
-    
+
+//MARK: - lazy label
+    private lazy var label: UILabel = {
+        let label  = UILabel(frame: .zero)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
+        return label
+    }()//endlabel
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupButton()
         view.backgroundColor = .systemBackground
+        title = "Jokes Randomizer"
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
 //MARK: - Next Button
     func setupButton() {
