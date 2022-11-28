@@ -9,7 +9,7 @@ import UIKit
 
 class FirstScreen: UIViewController {
 //MARK: - Property
-    let nextButton = UIButton()
+    let nextButton = CustomButton()
 
 //MARK: - lazy label
     private lazy var label: UILabel = {
@@ -45,7 +45,9 @@ class FirstScreen: UIViewController {
 //MARK: - viewDidLoad Function
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupButton()
+        setupButtomButtonConstraints()
+        addActionToButtomButton()
+        nextButton.setTitle("Favorite Jokes", for: .normal)
         view.backgroundColor = .systemBackground
         title = "Jokes Randomizer"
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -56,24 +58,25 @@ class FirstScreen: UIViewController {
         addConstraints()
         loadData()
     }
-//MARK: - Object Load Data
-    @objc private func loadData() {
-        guard let url = URL(string: "https://official-joke-api.appspot.com/random_ten") else {
-                return
-        }
-        dataTask?.cancel()
-        dataTask = URLSession.shared.dataTask(with: url) { data, response, error in
-            guard let data = data else { return }
-            if let decodedData = try? JSONDecoder().decode([Jokes].self, from: data) {
-                DispatchQueue.main.async {
-                    self.joke = decodedData
+    //MARK: - Object Load Data
+        @objc private func loadData() {
+            guard let url = URL(string: "https://official-joke-api.appspot.com/random_ten") else {
+                    return
+            }
+            dataTask?.cancel()
+            dataTask = URLSession.shared.dataTask(with: url) { data, response, error in
+                guard let data = data else { return }
+                if let decodedData = try? JSONDecoder().decode([Jokes].self, from: data) {
+                    DispatchQueue.main.async {
+                        self.joke = decodedData
+                    }
                 }
             }
+            dataTask?.resume()
         }
-        dataTask?.resume()
-    }
-    
-//MARK: - Constraints for Views
+        
+
+//MARK: - Constraints for Views in Jokes and Refresh Button
     private func addConstraints() {
         label.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 200).isActive = true
         label.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50).isActive = true
@@ -82,22 +85,24 @@ class FirstScreen: UIViewController {
         refreshButton.leadingAnchor.constraint(equalTo: label.leadingAnchor).isActive = true
         
     }
-//MARK: - Next Button
-    func setupButton() {
+    
+//MARK: - Setup Botton Constraints
+    func setupButtomButtonConstraints() {
         view.addSubview(nextButton)
-        nextButton.configuration = .filled()
-        nextButton.configuration?.baseBackgroundColor = .blue
-        nextButton.configuration?.title = "Favorite Jokes"
-        nextButton.addTarget(self, action: #selector(goToNextScreen), for: .touchUpInside)
+       
         nextButton.translatesAutoresizingMaskIntoConstraints = false
+        nextButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        nextButton.widthAnchor.constraint(equalToConstant: 280).isActive = true
+        nextButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        nextButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -200).isActive = true
         
-        NSLayoutConstraint.activate([
-            nextButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 40),
-            nextButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 70),
-            nextButton.widthAnchor.constraint(equalToConstant: 150),
-            nextButton.heightAnchor.constraint(equalToConstant: 30)
-        ])
-    }//setupbutton
+    }
+
+//MARK: - Add Action to Bottom Button
+    func addActionToButtomButton() {
+        nextButton.addTarget(self, action: #selector(goToNextScreen), for: .touchUpInside)
+    }
+    
 //MARK: - Object Next Screen
     @objc func goToNextScreen() {
         let nextScreen = SecondScreen()

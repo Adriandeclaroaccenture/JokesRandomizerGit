@@ -1,40 +1,52 @@
-////
-////  JokesViewModel.swift
-////  JokeRandomizer
-////
-////  Created by john.adrian.de.claro on 11/24/22.
-////
 //
+//  JokesViewModel.swift
+//  JokeRandomizer
 //
-//import Foundation
+//  Created by john.adrian.de.claro on 11/24/22.
 //
-//class JokesViewModel: ObservableObject {
-//    
-//    func getJokes(completion: @escaping (JKViewModel) -> Void) {
-//        
-//    }
-//
-//}
-//
-//struct JKViewModel: Decodable {
-//    
-//    let jokes: Jokes
-//    
-//    var idno: Int {
-//        return jokes.id
-//    }
-//    
-//    var type: String {
-//        return jokes.type
-//    }
-//    
-//    var setup: String {
-//        return jokes.setup
-//    }
-//    
-//    var punchline: String {
-//        return jokes.punchline
-//    }
-//}
-//
-//
+
+
+import Foundation
+
+class JokesViewModel: ObservableObject {
+    
+    private(set) var joke: [JKViewModel] = []
+    
+    func getJokesVM(url: URL) async {
+        do {
+        let jokes = try await WebService().getJokes(url: url)
+            self.joke = jokes.map(JKViewModel.init)
+        } catch {
+            print(error)
+        }
+    }
+
+}
+
+struct JKViewModel: Decodable {
+    
+    private let jokes: Jokes
+    
+    init(jokes: Jokes) {
+        self.jokes = jokes
+    }
+    
+    
+    var idno: Int {
+        return jokes.id
+    }
+    
+    var type: String {
+        return jokes.type
+    }
+    
+    var setup: String {
+        return jokes.setup
+    }
+    
+    var punchline: String {
+        return jokes.punchline
+    }
+}
+
+
