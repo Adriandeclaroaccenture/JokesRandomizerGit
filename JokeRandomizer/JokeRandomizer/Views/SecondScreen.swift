@@ -42,6 +42,4 @@ extension SecondScreen: UITableViewDelegate, UITableViewDataSource {
         return UITableViewCell()
     }
     
-    
-    
 }

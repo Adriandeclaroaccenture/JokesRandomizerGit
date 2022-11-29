@@ -9,6 +9,7 @@ import UIKit
 
 class FirstScreen: UIViewController {
 //MARK: - Property
+    private let jokesVM = JokesViewModel()
     let nextButton = CustomButton()
 
 //MARK: - lazy label
@@ -25,23 +26,11 @@ class FirstScreen: UIViewController {
         let button = UIButton(frame: .zero)
         let image = UIImage(systemName: "arrow.clockwise")
         button.setImage(image, for: .normal)
-        button.addTarget(self, action: #selector(loadData), for: .touchUpInside)
+        button.addTarget(self, action: #selector(loadButtonJokes), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()//refreshbutton
-//MARK: - URL Session
-    private var dataTask: URLSessionDataTask?
-    
-//MARK: - Holding Variable for Jokes
-    private var joke: [Jokes]? {
-        didSet {
-            guard let joke = joke?.randomElement() else { return }
-            label.text = "\(joke.setup)\n\(joke.punchline)"
-            label.sizeToFit()
-        }
-    }
-    
-    
+   
 //MARK: - viewDidLoad Function
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,26 +45,23 @@ class FirstScreen: UIViewController {
         view.addSubview(label)
         view.addSubview(refreshButton)
         addConstraints()
-        loadData()
-    }
-    //MARK: - Object Load Data
-        @objc private func loadData() {
-            guard let url = URL(string: "https://official-joke-api.appspot.com/random_ten") else {
-                    return
-            }
-            dataTask?.cancel()
-            dataTask = URLSession.shared.dataTask(with: url) { data, response, error in
-                guard let data = data else { return }
-                if let decodedData = try? JSONDecoder().decode([Jokes].self, from: data) {
-                    DispatchQueue.main.async {
-                        self.joke = decodedData
-                    }
-                }
-            }
-            dataTask?.resume()
-        }
         
-
+        Task {
+            await populateJokes()
+        }
+    }
+    
+//MARK: - Private joeks
+    private func populateJokes() async {
+       await jokesVM.getJokesVM(url: Constants.Urls.urlString)
+        guard let joke = jokesVM.joke.randomElement() else { return }
+        label.text = """
+                \(joke.setup)\n
+                \(joke.punchline)
+                """
+        label.sizeToFit()
+    }
+    
 //MARK: - Constraints for Views in Jokes and Refresh Button
     private func addConstraints() {
         label.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 200).isActive = true
@@ -107,6 +93,12 @@ class FirstScreen: UIViewController {
     @objc func goToNextScreen() {
         let nextScreen = SecondScreen()
         navigationController?.pushViewController(nextScreen, animated: true)
+    }
+//MARK: - Laod DAta for Jokes
+    @objc func loadButtonJokes() {
+        Task {
+            await populateJokes()
+        }
     }
 }
 
