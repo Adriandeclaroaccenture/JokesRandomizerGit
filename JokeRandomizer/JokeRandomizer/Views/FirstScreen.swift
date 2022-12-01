@@ -10,6 +10,7 @@ import UIKit
 class FirstScreen: UIViewController {
 //MARK: - Property
     private let jokesVM = JokesViewModel()
+    var jokes: Jokes!
     let nextButton = CustomButton()
 
 //MARK: - lazy label
@@ -35,7 +36,7 @@ class FirstScreen: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupButtomButtonConstraints()
-        addActionToButtomButton()
+//        addActionToButtomButton()
         nextButton.setTitle("Favorite Jokes", for: .normal)
         view.backgroundColor = .systemBackground
         title = "Jokes Randomizer"
@@ -45,7 +46,6 @@ class FirstScreen: UIViewController {
         view.addSubview(label)
         view.addSubview(refreshButton)
         addConstraints()
-        
         Task {
             await populateJokes()
         }
@@ -83,17 +83,18 @@ class FirstScreen: UIViewController {
         nextButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -200).isActive = true
         
     }
+   
 
 //MARK: - Add Action to Bottom Button
-    func addActionToButtomButton() {
-        nextButton.addTarget(self, action: #selector(goToNextScreen), for: .touchUpInside)
-    }
+//    func addActionToButtomButton() {
+//        nextButton.addTarget(self, action: #selector(goToNextScreen), for: .touchUpInside)
+//    }
     
 //MARK: - Object Next Screen
-    @objc func goToNextScreen() {
-        let nextScreen = SecondScreen()
-        navigationController?.pushViewController(nextScreen, animated: true)
-    }
+//    @objc func goToNextScreen() {
+//        let nextScreen = //FolderListViewController()
+//        navigationController?.pushViewController(nextScreen, animated: true)
+//    }
 //MARK: - Laod DAta for Jokes
     @objc func loadButtonJokes() {
         Task {

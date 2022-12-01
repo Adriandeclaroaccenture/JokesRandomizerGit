@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 enum JokesError: Error {
     case invalidServerResponse
