@@ -1,10 +1,10 @@
+////
+////  CoreDataManager.swift
+////  JokeRandomizer
+////
+////  Created by john.adrian.de.claro on 11/29/22.
+////
 //
-//  CoreDataManager.swift
-//  JokeRandomizer
-//
-//  Created by john.adrian.de.claro on 11/29/22.
-//
-
 //import Foundation
 //import CoreData
 //
@@ -14,7 +14,7 @@
 //    var managedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
 //        
 //    private lazy var persistentContainer: NSPersistentContainer = {
-//        let container = NSPersistentContainer(name: "JokesDataModel")
+//        let container = NSPersistentContainer(name: "JokesData")
 //        container.loadPersistentStores { (_, error) in
 //            if let error = error as NSError? {
 //                fatalError("Unresolved Error \(error), \(error.userInfo)")
@@ -39,4 +39,4 @@
 //        }
 //    }
 //}
-
+//

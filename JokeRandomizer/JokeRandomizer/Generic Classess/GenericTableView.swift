@@ -1,10 +1,10 @@
-//
-//  GenericTableView.swift
-//  JokeRandomizer
-//
-//  Created by john.adrian.de.claro on 12/1/22.
-//
-
+////
+////  GenericTableView.swift
+////  JokeRandomizer
+////
+////  Created by john.adrian.de.claro on 12/1/22.
+////
+////
 //import UIKit
 //import CoreData
 //

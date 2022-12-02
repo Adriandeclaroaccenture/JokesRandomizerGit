@@ -11,16 +11,12 @@
 		FF0E19E8293864AC007A77C0 /* AddNewItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0E19E7293864AC007A77C0 /* AddNewItemViewController.swift */; };
 		FF0E19EA29386D3E007A77C0 /* ToDoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0E19E929386D3E007A77C0 /* ToDoTableViewCell.swift */; };
 		FF0E19EC29386FB7007A77C0 /* ToDoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0E19EB29386FB7007A77C0 /* ToDoListViewController.swift */; };
-		FF0E19EF29387F27007A77C0 /* JokesData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FF0E19ED29387F27007A77C0 /* JokesData.xcdatamodeld */; };
-		FF0E19F1293889F2007A77C0 /* JokesListFavorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0E19F0293889F2007A77C0 /* JokesListFavorite.swift */; };
-		FF0E19F329388C36007A77C0 /* JokeListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0E19F229388C36007A77C0 /* JokeListItem.swift */; };
-		FF0E19F529388CE8007A77C0 /* JokeListItemProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0E19F429388CE8007A77C0 /* JokeListItemProperties.swift */; };
 		FF0E19F729389037007A77C0 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0E19F629389037007A77C0 /* CustomCell.swift */; };
-		FF12F7532935FB4900157D62 /* JokesDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FF12F7512935FB4900157D62 /* JokesDataModel.xcdatamodeld */; };
 		FF12F7562935FD9F00157D62 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF12F7552935FD9F00157D62 /* CoreDataManager.swift */; };
 		FF12F7582936021F00157D62 /* CoreDataManagerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF12F7572936021F00157D62 /* CoreDataManagerExtension.swift */; };
 		FF12F75B293602F400157D62 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF12F75A293602F400157D62 /* DataProvider.swift */; };
 		FF12F75D29361B8F00157D62 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF12F75C29361B8F00157D62 /* DataSource.swift */; };
+		FF87ED0E29399BB300CE930D /* FavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF87ED0D29399BB300CE930D /* FavoriteButton.swift */; };
 		FF8961E82934542300BF8727 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8961E72934542300BF8727 /* CustomButton.swift */; };
 		FF8961EB29346D9A00BF8727 /* JokesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8961EA29346D9A00BF8727 /* JokesAPI.swift */; };
 		FF8961EE293490A200BF8727 /* PinExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8961ED293490A200BF8727 /* PinExtension.swift */; };
@@ -34,6 +30,8 @@
 		FF8A19A8292F452A00AEAA9A /* FolderListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8A19A7292F452A00AEAA9A /* FolderListViewController.swift */; };
 		FF8A19AC292F4AC700AEAA9A /* JokesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8A19AB292F4AC700AEAA9A /* JokesViewModel.swift */; };
 		FF8A19AF292F516900AEAA9A /* Jokes.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8A19AE292F516900AEAA9A /* Jokes.swift */; };
+		FFEEF4FF2939A10200AD5700 /* JokesData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FFEEF4FD2939A10200AD5700 /* JokesData.xcdatamodeld */; };
+		FFEEF5052939A3AB00AD5700 /* JokeListFavorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFEEF5042939A3AB00AD5700 /* JokeListFavorite.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,16 +39,12 @@
 		FF0E19E7293864AC007A77C0 /* AddNewItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewItemViewController.swift; sourceTree = "<group>"; };
 		FF0E19E929386D3E007A77C0 /* ToDoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableViewCell.swift; sourceTree = "<group>"; };
 		FF0E19EB29386FB7007A77C0 /* ToDoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListViewController.swift; sourceTree = "<group>"; };
-		FF0E19EE29387F27007A77C0 /* JokesData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = JokesData.xcdatamodel; sourceTree = "<group>"; };
-		FF0E19F0293889F2007A77C0 /* JokesListFavorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokesListFavorite.swift; sourceTree = "<group>"; };
-		FF0E19F229388C36007A77C0 /* JokeListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeListItem.swift; sourceTree = "<group>"; };
-		FF0E19F429388CE8007A77C0 /* JokeListItemProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeListItemProperties.swift; sourceTree = "<group>"; };
 		FF0E19F629389037007A77C0 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
-		FF12F7522935FB4900157D62 /* JokesDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = JokesDataModel.xcdatamodel; sourceTree = "<group>"; };
 		FF12F7552935FD9F00157D62 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		FF12F7572936021F00157D62 /* CoreDataManagerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManagerExtension.swift; sourceTree = "<group>"; };
 		FF12F75A293602F400157D62 /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
 		FF12F75C29361B8F00157D62 /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
+		FF87ED0D29399BB300CE930D /* FavoriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteButton.swift; sourceTree = "<group>"; };
 		FF8961E72934542300BF8727 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		FF8961EA29346D9A00BF8727 /* JokesAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokesAPI.swift; sourceTree = "<group>"; };
 		FF8961ED293490A200BF8727 /* PinExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinExtension.swift; sourceTree = "<group>"; };
@@ -66,6 +60,8 @@
 		FF8A19A7292F452A00AEAA9A /* FolderListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderListViewController.swift; sourceTree = "<group>"; };
 		FF8A19AB292F4AC700AEAA9A /* JokesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokesViewModel.swift; sourceTree = "<group>"; };
 		FF8A19AE292F516900AEAA9A /* Jokes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Jokes.swift; sourceTree = "<group>"; };
+		FFEEF4FE2939A10200AD5700 /* JokesData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = JokesData.xcdatamodel; sourceTree = "<group>"; };
+		FFEEF5042939A3AB00AD5700 /* JokeListFavorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeListFavorite.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				FF8961E72934542300BF8727 /* CustomButton.swift */,
+				FF87ED0D29399BB300CE930D /* FavoriteButton.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -101,11 +98,8 @@
 		FF12F7542935FD8800157D62 /* Database */ = {
 			isa = PBXGroup;
 			children = (
-				FF12F7512935FB4900157D62 /* JokesDataModel.xcdatamodeld */,
-				FF0E19ED29387F27007A77C0 /* JokesData.xcdatamodeld */,
+				FFEEF4FD2939A10200AD5700 /* JokesData.xcdatamodeld */,
 				FF12F7552935FD9F00157D62 /* CoreDataManager.swift */,
-				FF0E19F229388C36007A77C0 /* JokeListItem.swift */,
-				FF0E19F429388CE8007A77C0 /* JokeListItemProperties.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -186,7 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				FF8A1997292F11F400AEAA9A /* FirstScreen.swift */,
-				FF0E19F0293889F2007A77C0 /* JokesListFavorite.swift */,
+				FFEEF5042939A3AB00AD5700 /* JokeListFavorite.swift */,
 				FF8A19A7292F452A00AEAA9A /* FolderListViewController.swift */,
 				FF8961EF2934992A00BF8727 /* FolderTableViewCell.swift */,
 				FF0E19E62938642A007A77C0 /* SubViews */,
@@ -280,15 +274,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF0E19F529388CE8007A77C0 /* JokeListItemProperties.swift in Sources */,
-				FF0E19EF29387F27007A77C0 /* JokesData.xcdatamodeld in Sources */,
 				FF8961F32934A68200BF8727 /* WebService.swift in Sources */,
 				FF8961F02934992A00BF8727 /* FolderTableViewCell.swift in Sources */,
 				FF0E19E8293864AC007A77C0 /* AddNewItemViewController.swift in Sources */,
 				FF12F7582936021F00157D62 /* CoreDataManagerExtension.swift in Sources */,
 				FF8A1998292F11F400AEAA9A /* FirstScreen.swift in Sources */,
 				FF0E19F729389037007A77C0 /* CustomCell.swift in Sources */,
-				FF0E19F1293889F2007A77C0 /* JokesListFavorite.swift in Sources */,
+				FFEEF4FF2939A10200AD5700 /* JokesData.xcdatamodeld in Sources */,
+				FFEEF5052939A3AB00AD5700 /* JokeListFavorite.swift in Sources */,
 				FF8A19A8292F452A00AEAA9A /* FolderListViewController.swift in Sources */,
 				FF8A1994292F11F400AEAA9A /* AppDelegate.swift in Sources */,
 				FF12F75D29361B8F00157D62 /* DataSource.swift in Sources */,
@@ -298,13 +291,12 @@
 				FF12F7562935FD9F00157D62 /* CoreDataManager.swift in Sources */,
 				FF0E19E529385138007A77C0 /* GenericTableView.swift in Sources */,
 				FF0E19EA29386D3E007A77C0 /* ToDoTableViewCell.swift in Sources */,
-				FF0E19F329388C36007A77C0 /* JokeListItem.swift in Sources */,
 				FF8A19AF292F516900AEAA9A /* Jokes.swift in Sources */,
 				FF8961EE293490A200BF8727 /* PinExtension.swift in Sources */,
 				FF8A19AC292F4AC700AEAA9A /* JokesViewModel.swift in Sources */,
 				FF12F75B293602F400157D62 /* DataProvider.swift in Sources */,
-				FF12F7532935FB4900157D62 /* JokesDataModel.xcdatamodeld in Sources */,
 				FF8961EB29346D9A00BF8727 /* JokesAPI.swift in Sources */,
+				FF87ED0E29399BB300CE930D /* FavoriteButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -514,23 +506,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		FF0E19ED29387F27007A77C0 /* JokesData.xcdatamodeld */ = {
+		FFEEF4FD2939A10200AD5700 /* JokesData.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				FF0E19EE29387F27007A77C0 /* JokesData.xcdatamodel */,
+				FFEEF4FE2939A10200AD5700 /* JokesData.xcdatamodel */,
 			);
-			currentVersion = FF0E19EE29387F27007A77C0 /* JokesData.xcdatamodel */;
+			currentVersion = FFEEF4FE2939A10200AD5700 /* JokesData.xcdatamodel */;
 			path = JokesData.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-		FF12F7512935FB4900157D62 /* JokesDataModel.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				FF12F7522935FB4900157D62 /* JokesDataModel.xcdatamodel */,
-			);
-			currentVersion = FF12F7522935FB4900157D62 /* JokesDataModel.xcdatamodel */;
-			path = JokesDataModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
