@@ -7,10 +7,13 @@
 
 import UIKit
 
-class FirstScreen: UIViewController {
+class FirstScreenViewController: UIViewController {
 //MARK: - Property
     private let jokesVM = JokesViewModel()
-    var jokes: Jokes!
+    var jokes: JokesModel!
+    var customButton = CustomButton()
+    var addFavButton = addFavoriteButton()
+    
     
 //MARK: - setupLabel
     private let setupLabel: UILabel = {
@@ -40,7 +43,7 @@ class FirstScreen: UIViewController {
     }()
 //MARK: - Refresh Button
     private lazy var refreshButton: UIButton = {
-        let button = UIButton(frame: .zero)
+        let button = CustomButton(frame: .zero)
         let image = UIImage(systemName: "arrow.clockwise.circle.fill")
         button.setImage(image, for: .normal)
         button.addTarget(self, action: #selector(loadButtonJokes), for: .touchUpInside)
@@ -50,7 +53,7 @@ class FirstScreen: UIViewController {
 //MARK: - private let favoriteButton
     private let favoriteButton: UIButton = {
         
-        let faveButton = UIButton()
+        let faveButton = addFavoriteButton()
         faveButton.translatesAutoresizingMaskIntoConstraints = false
         let config = UIImage.SymbolConfiguration(pointSize: 32.0, weight: .bold)
         let image = UIImage(systemName: "plus", withConfiguration: config)
@@ -82,6 +85,7 @@ class FirstScreen: UIViewController {
 //       refreshButtonConstraints()
         addConstraints()
         navigationJokesItem()
+//        addFavButton
         favoriteButtonConstriants()
         Task {
             await populateJokes()
@@ -101,29 +105,32 @@ class FirstScreen: UIViewController {
     
 //MARK: - Constraints for Views in Jokes and Refresh Button
     private func addConstraints() {
-//        NSLayoutConstraint.activate([
-//            setupLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-//            setupLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-//            setupLabel.topAnchor.constraint(equalTo: view.topAnchor),
-//            setupLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-//        ])
-        setupLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 200).isActive = true
-        setupLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50).isActive = true
-//        setupLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 20).isActive = true
-//        setupLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 20).isActive = true
+        //newconstraint
+//        setupLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
+//        setupLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
+//        setupLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+//
+//        punchLineLabel.topAnchor.constraint(equalTo: setupLabel.bottomAnchor, constant: 10).isActive = true
+//        punchLineLabel.leadingAnchor.constraint(equalTo: setupLabel.leadingAnchor).isActive = true
+//
+//        refreshButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50).isActive = true
+//        refreshButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 100).isActive = true
+//        refreshButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -100).isActive = true
+//        refreshButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
+        //old constraints
+        setupLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
+        setupLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
         setupLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         refreshButton.topAnchor.constraint(equalTo: setupLabel.bottomAnchor, constant: 10).isActive = true
         refreshButton.leadingAnchor.constraint(equalTo: setupLabel.leadingAnchor).isActive = true
+        
+
     }
-//MARK: - refreshButtonConstraints
-//    private func refreshButtonConstraints() {
-//        refreshButton.topAnchor.constraint(equalTo: setupLabel.bottomAnchor, constant: 10).isActive = true
-//        refreshButton.leadingAnchor.constraint(equalTo: setupLabel.leadingAnchor).isActive = true
-//    }
 
 //MARK: - Favorite Button Constraints
     func favoriteButtonConstriants() {
-        
+
         NSLayoutConstraint.activate([
                     favoriteButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
                     favoriteButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16),
@@ -149,12 +156,12 @@ class FirstScreen: UIViewController {
     }
 //MARK: - obj func tapFavorite
     @objc func tapFavorite() {
-        let listVC = JokeListFavorite()
+        let listVC = JokeListFavoriteViewController()
         listVC.addJoke(setup: setupLabel.text!, punch: punchLineLabel.text!)
     }
 //MARK: - objc func tapList
     @objc func tapList() {
-        let listVC = JokeListFavorite()
+        let listVC = JokeListFavoriteViewController()
         navigationController?.pushViewController(listVC, animated: true)
     }
 }

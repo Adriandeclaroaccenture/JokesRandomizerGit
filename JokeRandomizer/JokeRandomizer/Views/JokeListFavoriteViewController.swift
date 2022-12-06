@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-class JokeListFavorite: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class JokeListFavoriteViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     let tableView: UITableView = {
@@ -28,9 +28,9 @@ class JokeListFavorite: UIViewController, UITableViewDelegate, UITableViewDataSo
         tableView.delegate = self
         tableView.dataSource = self
         tableView.frame = view.bounds
-        
-        tableView.register(CustomCell.self, forCellReuseIdentifier: "customCell")
-        tableView.rowHeight = 80
+//        tableView.estimatedRowHeight = 55.0
+        tableView.register(CustomCellTableViewCell.self, forCellReuseIdentifier: "customCell")
+        tableView.rowHeight = 100
         tableView.tableFooterView = UIView()
     }
     override func viewDidLayoutSubviews() {
@@ -44,7 +44,7 @@ class JokeListFavorite: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let model = models[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as! CustomCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as! CustomCellTableViewCell
         cell.setup.text = model.setup
         cell.punchline.text = model.punchline
         return cell

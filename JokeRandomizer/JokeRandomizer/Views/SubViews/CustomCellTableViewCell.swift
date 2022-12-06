@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class CustomCell: UITableViewCell {
+class CustomCellTableViewCell: UITableViewCell {
     let punchline = UILabel()
     let setup = UILabel()
     

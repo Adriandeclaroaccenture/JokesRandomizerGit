@@ -14,13 +14,13 @@ enum JokesError: Error {
 
 
 class WebService {
-    func getJokes(url: URL) async throws -> [Jokes] {
+    func getJokes(url: URL) async throws -> [JokesModel] {
         
        let (data, response) = try await URLSession.shared.data(from: url)
             guard let httpResponse = response as? HTTPURLResponse?,
                   httpResponse?.statusCode == 200 else {
                 throw JokesError.invalidServerResponse
             }
-        return try JSONDecoder().decode([Jokes].self, from: data)
+        return try JSONDecoder().decode([JokesModel].self, from: data)
     }
 }

@@ -10,7 +10,7 @@ import Foundation
 
 class JokesViewModel: ObservableObject {
     
-    private(set) var joke: [Jokes] = []
+    private(set) var joke: [JokesModel] = []
     
     func getJokesVM(url: URL) async {
         do {

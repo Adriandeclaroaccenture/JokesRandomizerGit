@@ -21,11 +21,12 @@ class CustomButton: UIButton {
     
     func setupButton() {
         setShadow()
-        
+        shake()
+        let image = UIImage(systemName: "arrow.clockwise.circle.fill")
+        setImage(image, for: .normal)
         setTitleColor(.white, for: .normal)
-        
         backgroundColor = .blue
-        titleLabel?.font = UIFont(name: "AvenirNext-DemiBold", size: 10)
+//        titleLabel?.font = UIFont(name: "AvenirNext-DemiBold", size: 10)
         layer.cornerRadius = 25
         layer.borderWidth = 3.0
         layer.borderColor = UIColor.darkGray.cgColor
