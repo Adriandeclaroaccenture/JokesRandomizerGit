@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FF0E19E529385138007A77C0 /* GenericTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0E19E429385138007A77C0 /* GenericTableView.swift */; };
 		FF0E19E8293864AC007A77C0 /* AddNewItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0E19E7293864AC007A77C0 /* AddNewItemViewController.swift */; };
 		FF0E19EA29386D3E007A77C0 /* ToDoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0E19E929386D3E007A77C0 /* ToDoTableViewCell.swift */; };
 		FF0E19EC29386FB7007A77C0 /* ToDoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0E19EB29386FB7007A77C0 /* ToDoListViewController.swift */; };
@@ -15,7 +14,6 @@
 		FF12F7562935FD9F00157D62 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF12F7552935FD9F00157D62 /* CoreDataManager.swift */; };
 		FF12F7582936021F00157D62 /* CoreDataManagerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF12F7572936021F00157D62 /* CoreDataManagerExtension.swift */; };
 		FF12F75B293602F400157D62 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF12F75A293602F400157D62 /* DataProvider.swift */; };
-		FF12F75D29361B8F00157D62 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF12F75C29361B8F00157D62 /* DataSource.swift */; };
 		FF87ED0E29399BB300CE930D /* FavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF87ED0D29399BB300CE930D /* FavoriteButton.swift */; };
 		FF8961E82934542300BF8727 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8961E72934542300BF8727 /* CustomButton.swift */; };
 		FF8961EB29346D9A00BF8727 /* JokesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8961EA29346D9A00BF8727 /* JokesAPI.swift */; };
@@ -35,7 +33,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		FF0E19E429385138007A77C0 /* GenericTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericTableView.swift; sourceTree = "<group>"; };
 		FF0E19E7293864AC007A77C0 /* AddNewItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewItemViewController.swift; sourceTree = "<group>"; };
 		FF0E19E929386D3E007A77C0 /* ToDoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableViewCell.swift; sourceTree = "<group>"; };
 		FF0E19EB29386FB7007A77C0 /* ToDoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListViewController.swift; sourceTree = "<group>"; };
@@ -43,7 +40,6 @@
 		FF12F7552935FD9F00157D62 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		FF12F7572936021F00157D62 /* CoreDataManagerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManagerExtension.swift; sourceTree = "<group>"; };
 		FF12F75A293602F400157D62 /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
-		FF12F75C29361B8F00157D62 /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 		FF87ED0D29399BB300CE930D /* FavoriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteButton.swift; sourceTree = "<group>"; };
 		FF8961E72934542300BF8727 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		FF8961EA29346D9A00BF8727 /* JokesAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokesAPI.swift; sourceTree = "<group>"; };
@@ -108,8 +104,6 @@
 			isa = PBXGroup;
 			children = (
 				FF12F75A293602F400157D62 /* DataProvider.swift */,
-				FF12F75C29361B8F00157D62 /* DataSource.swift */,
-				FF0E19E429385138007A77C0 /* GenericTableView.swift */,
 			);
 			path = "Generic Classess";
 			sourceTree = "<group>";
@@ -284,12 +278,10 @@
 				FFEEF5052939A3AB00AD5700 /* JokeListFavorite.swift in Sources */,
 				FF8A19A8292F452A00AEAA9A /* FolderListViewController.swift in Sources */,
 				FF8A1994292F11F400AEAA9A /* AppDelegate.swift in Sources */,
-				FF12F75D29361B8F00157D62 /* DataSource.swift in Sources */,
 				FF0E19EC29386FB7007A77C0 /* ToDoListViewController.swift in Sources */,
 				FF8A1996292F11F400AEAA9A /* SceneDelegate.swift in Sources */,
 				FF8961E82934542300BF8727 /* CustomButton.swift in Sources */,
 				FF12F7562935FD9F00157D62 /* CoreDataManager.swift in Sources */,
-				FF0E19E529385138007A77C0 /* GenericTableView.swift in Sources */,
 				FF0E19EA29386D3E007A77C0 /* ToDoTableViewCell.swift in Sources */,
 				FF8A19AF292F516900AEAA9A /* Jokes.swift in Sources */,
 				FF8961EE293490A200BF8727 /* PinExtension.swift in Sources */,
