@@ -6,11 +6,15 @@
 //
 
 import UIKit
+import Combine
+import CoreData
 
 class FirstScreenViewController: UIViewController {
 //MARK: - Property
     private let jokesVM = JokesViewModel()
-    var jokes: JokesModel!
+    private let jokesCoreData = JokesDataManager()
+    private let input: PassthroughSubject<JokesViewModel.Input, Never> = .init()
+    private var cancellables = Set<AnyCancellable>()
     var customButton = CustomButton()
     var addFavButton = addFavoriteButton()
     
@@ -66,10 +70,26 @@ class FirstScreenViewController: UIViewController {
         faveButton.addTarget(self, action: #selector(showAlertMessage), for: .touchUpInside)
         return faveButton
     }()
+//MARK: - StackView
+    private let stackView: UIStackView = {
+        let stack = UIStackView()
+        stack.spacing = 25.0
+        stack.axis = .vertical
+        stack.alignment = .center
+        stack.distribution = .equalSpacing
+        return stack
+    }()
+    
 //MARK: - Navigation
     private func navigationJokesItem() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "list.bullet.circle"), style: .plain, target: self, action: #selector(tapList))
     }
+//MARK: - loader
+    let loader: UIActivityIndicatorView = {
+        var loader = UIActivityIndicatorView(frame: .zero)
+        loader.style = .medium
+        return loader
+    }()
     
 //MARK: - viewDidLoad Function
     override func viewDidLoad() {
@@ -85,43 +105,75 @@ class FirstScreenViewController: UIViewController {
 //       refreshButtonConstraints()
         addConstraints()
         navigationJokesItem()
+//        setupConstraints()
 //        addFavButton
         favoriteButtonConstriants()
-        Task {
-            await populateJokes()
+        setupBinders()
+//        Task {
+//            await populateJokes()
+//        }
+    }
+    
+//MARK: - Private func jokes
+
+    private func setupBinders(){
+        let output = jokesVM.getTransFormJokes(input: input.eraseToAnyPublisher())
+        output.sink { [weak self] event in
+            switch event{
+            case .fetchJokeSucceed(let joke):
+                guard let joke = joke.randomElement() else {return}
+                self?.setupLabel.text = joke.setup
+                self?.punchLineLabel.text = joke.punchline
+            case .fetchJokeDidFail(let error):
+                self?.setupLabel.text = error.localizedDescription
+                self?.punchLineLabel.text = error.localizedDescription
+            case .toggleButton(let isEnabled):
+                self?.refreshButton.isEnabled = isEnabled
+                self?.refreshButton.backgroundColor = isEnabled ? .systemBlue : .systemGray5
+            case .toggleLoading(let loading):
+                loading ? self?.loader.startAnimating() : self?.loader.stopAnimating()
+                if(loading == false){
+                    self?.setupLabel.isHidden = false
+                    self?.punchLineLabel.isHidden = false
+                    self?.loader.isHidden = true
+                }
+                
+            }
         }
+        .store(in: &cancellables)
     }
-    
-//MARK: - Private joeks
-    private func populateJokes() async {
-       await jokesVM.getJokesVM(url: Constants.Urls.urlString)
-        guard let joke = jokesVM.joke.randomElement() else { return }
-        setupLabel.text = """
-                \(joke.setup)\n
-                \(joke.punchline)
-                """
-        setupLabel.sizeToFit()
-    }
-    
+//MARK: - placeholder
+//    func setupConstraints(){
+//        [setupLabel,punchLineLabel,loader,favoriteButton,refreshButton].forEach { item in
+//            stackView.addArrangedSubview(item)
+//        }
+//        NSLayoutConstraint.activate([
+//            stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+//            stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+//            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+//            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
+//
+//
+//            favoriteButton.heightAnchor.constraint(equalToConstant: 50),
+//            favoriteButton.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: 30),
+//            favoriteButton.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: -30),
+//
+//            refreshButton.heightAnchor.constraint(equalToConstant: 50),
+//            refreshButton.leadingAnchor.constraint(equalTo: favoriteButton.leadingAnchor),
+//            refreshButton.trailingAnchor.constraint(equalTo: favoriteButton.trailingAnchor)
+//
+//        ])
+//    }
 //MARK: - Constraints for Views in Jokes and Refresh Button
     private func addConstraints() {
-        //newconstraint
-//        setupLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
-//        setupLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
-//        setupLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-//
-//        punchLineLabel.topAnchor.constraint(equalTo: setupLabel.bottomAnchor, constant: 10).isActive = true
-//        punchLineLabel.leadingAnchor.constraint(equalTo: setupLabel.leadingAnchor).isActive = true
-//
-//        refreshButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50).isActive = true
-//        refreshButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 100).isActive = true
-//        refreshButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -100).isActive = true
-//        refreshButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        
-        //old constraints
+   
         setupLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
         setupLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
         setupLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        punchLineLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
+        punchLineLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 10).isActive = true
+        punchLineLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        punchLineLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         refreshButton.topAnchor.constraint(equalTo: setupLabel.bottomAnchor, constant: 10).isActive = true
         refreshButton.leadingAnchor.constraint(equalTo: setupLabel.leadingAnchor).isActive = true
         
@@ -150,19 +202,31 @@ class FirstScreenViewController: UIViewController {
     }
 //MARK: - Laod DAta for Jokes
     @objc func loadButtonJokes() {
-        Task {
-            await populateJokes()
-        }
+        input.send(.refreshButtonTap)
     }
 //MARK: - obj func tapFavorite
     @objc func tapFavorite() {
-        let listVC = JokeListFavoriteViewController()
-        listVC.addJoke(setup: setupLabel.text!, punch: punchLineLabel.text!)
+        jokesCoreData.addJoke(setup: setupLabel.text!, punch: punchLineLabel.text!)
+        debugPrint("Added Favorites Joke")
     }
 //MARK: - objc func tapList
     @objc func tapList() {
         let listVC = JokeListFavoriteViewController()
         navigationController?.pushViewController(listVC, animated: true)
     }
+//MARK: - Func loadView
+    override func loadView() {
+        super.loadView()
+        [stackView,setupLabel,punchLineLabel,loader,favoriteButton,refreshButton].forEach { item in
+            self.view.addSubview(item)
+            item.translatesAutoresizingMaskIntoConstraints = false
+        }
+    }
+//MARK: - Func viewDidAppear
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        input.send(.viewDidAppear)
+    }
+
 }
 

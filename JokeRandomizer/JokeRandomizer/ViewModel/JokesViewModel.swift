@@ -7,46 +7,54 @@
 
 
 import Foundation
+import Combine
 
-class JokesViewModel: ObservableObject {
+class JokesViewModel {
+    private var cancellables = Set<AnyCancellable>()
     
-    private(set) var joke: [JokesModel] = []
-    
-    func getJokesVM(url: URL) async {
-        do {
-        let jokes = try await WebService().getJokes(url: url)
-            self.joke = jokes
-        } catch {
-            print(error)
-        }
+    enum Input {
+        case viewDidAppear
+        case refreshButtonTap
     }
 
+    enum Output {
+        case fetchJokeDidFail(error: Error)
+        case fetchJokeSucceed(jokes: [JokesModel])
+        case toggleButton(isEnabled: Bool)
+        case toggleLoading(loading: Bool)
+    }
+    
+    private let jokeServiceType: JokesServiceType
+    private let output: PassthroughSubject<Output, Never> = .init()
+    
+    init(jokeServiceType: JokesServiceType = WebService()) {
+        self.jokeServiceType = jokeServiceType
+    }
+//MARK: - Func getRandomJokes
+    func getRandomJokes() {
+        output.send(.toggleLoading(loading: true))
+        output.send(.toggleButton(isEnabled: false))
+        jokeServiceType.getRandomJokes().sink { [weak self] completion in
+            self?.output.send(.toggleLoading(loading: false))
+            self?.output.send(.toggleButton(isEnabled: false))
+            switch completion {
+                case .failure(let errror):
+                    self?.output.send(.fetchJokeDidFail(error: errror))
+                case .finished:
+                    debugPrint("Random Jokes Fetch")
+                }
+            } receiveValue: { [weak self] joke in
+                        self?.output.send(.fetchJokeSucceed(jokes: joke))
+        } .store(in: &cancellables)
+    }
+//MARK: - Func getTransformJokes
+    func getTransFormJokes(input: AnyPublisher<Input, Never>) -> AnyPublisher<Output, Never> {
+        input.sink { [weak self] event in
+            switch event {
+            case .refreshButtonTap, .viewDidAppear:
+                self?.getRandomJokes()
+            }
+        } .store(in: &cancellables)
+        return output.eraseToAnyPublisher()
+    }
 }
-//
-//struct JKViewModel: Decodable {
-//    
-//    private let jokes: Jokes
-//    
-//    init(jokes: Jokes) {
-//        self.jokes = jokes
-//    }
-//    
-//    
-//    var idno: Int {
-//        return jokes.id
-//    }
-//    
-//    var type: String {
-//        return jokes.type
-//    }
-//    
-//    var setup: String {
-//        return jokes.setup
-//    }
-//    
-//    var punchline: String {
-//        return jokes.punchline
-//    }
-//}
-
-

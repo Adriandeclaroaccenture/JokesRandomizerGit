@@ -9,18 +9,33 @@ import Foundation
 import Combine
 
 enum JokesError: Error {
+    case invalidUrl
+    case noResponse
+}
+
+enum StocksError: Error {
     case invalidServerResponse
 }
 
-
-class WebService {
-    func getJokes(url: URL) async throws -> [JokesModel] {
-        
-       let (data, response) = try await URLSession.shared.data(from: url)
-            guard let httpResponse = response as? HTTPURLResponse?,
-                  httpResponse?.statusCode == 200 else {
-                throw JokesError.invalidServerResponse
-            }
-        return try JSONDecoder().decode([JokesModel].self, from: data)
-    }
+protocol JokesServiceType {
+    func getRandomJokes() -> AnyPublisher<[JokesModel], Error>
 }
+
+class WebService: JokesServiceType {
+    func getRandomJokes() -> AnyPublisher<[JokesModel], Error> {
+        guard let url = URL(string: "https://official-joke-api.appspot.com/random_ten") else {
+            fatalError("Invalid URL")
+        }
+        return URLSession.shared.dataTaskPublisher(for: url)
+            .catch { error in
+                return Fail(error: error).eraseToAnyPublisher()
+            }
+            .tryMap { data, _ in
+                try JSONDecoder().decode([JokesModel].self, from: data)
+            }
+            .receive(on: RunLoop.main)
+            .eraseToAnyPublisher()
+        }
+        
+    }
+

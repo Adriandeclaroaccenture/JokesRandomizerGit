@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		FF0E19F729389037007A77C0 /* CustomCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0E19F629389037007A77C0 /* CustomCellTableViewCell.swift */; };
+		FF1667D329402F2900F36A07 /* JokesDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1667D229402F2900F36A07 /* JokesDataManager.swift */; };
+		FF1667D52940702C00F36A07 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1667D42940702C00F36A07 /* CustomLabel.swift */; };
 		FF87ED0E29399BB300CE930D /* FavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF87ED0D29399BB300CE930D /* FavoriteButton.swift */; };
 		FF8961E82934542300BF8727 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8961E72934542300BF8727 /* CustomButton.swift */; };
 		FF8961EB29346D9A00BF8727 /* JokesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8961EA29346D9A00BF8727 /* JokesAPI.swift */; };
@@ -26,6 +28,8 @@
 
 /* Begin PBXFileReference section */
 		FF0E19F629389037007A77C0 /* CustomCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCellTableViewCell.swift; sourceTree = "<group>"; };
+		FF1667D229402F2900F36A07 /* JokesDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokesDataManager.swift; sourceTree = "<group>"; };
+		FF1667D42940702C00F36A07 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		FF87ED0D29399BB300CE930D /* FavoriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteButton.swift; sourceTree = "<group>"; };
 		FF8961E72934542300BF8727 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		FF8961EA29346D9A00BF8727 /* JokesAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokesAPI.swift; sourceTree = "<group>"; };
@@ -63,19 +67,21 @@
 			path = SubViews;
 			sourceTree = "<group>";
 		};
-		FF12F7502935E01000157D62 /* Buttons */ = {
+		FF12F7502935E01000157D62 /* CustomButtons */ = {
 			isa = PBXGroup;
 			children = (
 				FF8961E72934542300BF8727 /* CustomButton.swift */,
 				FF87ED0D29399BB300CE930D /* FavoriteButton.swift */,
+				FF1667D42940702C00F36A07 /* CustomLabel.swift */,
 			);
-			path = Buttons;
+			path = CustomButtons;
 			sourceTree = "<group>";
 		};
 		FF12F7542935FD8800157D62 /* Database */ = {
 			isa = PBXGroup;
 			children = (
 				FFEEF4FD2939A10200AD5700 /* JokesData.xcdatamodeld */,
+				FF1667D229402F2900F36A07 /* JokesDataManager.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -123,7 +129,7 @@
 				FF8A19AA292F4AA900AEAA9A /* ViewModel */,
 				FF8961EC2934908E00BF8727 /* Extension */,
 				FF8961F12934A67200BF8727 /* Services */,
-				FF12F7502935E01000157D62 /* Buttons */,
+				FF12F7502935E01000157D62 /* CustomButtons */,
 				FF12F7542935FD8800157D62 /* Database */,
 				FF8A199C292F11F800AEAA9A /* Assets.xcassets */,
 				FF8A199E292F11F800AEAA9A /* LaunchScreen.storyboard */,
@@ -229,6 +235,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF8961F32934A68200BF8727 /* WebService.swift in Sources */,
+				FF1667D52940702C00F36A07 /* CustomLabel.swift in Sources */,
 				FF8A1998292F11F400AEAA9A /* FirstScreenViewController.swift in Sources */,
 				FF0E19F729389037007A77C0 /* CustomCellTableViewCell.swift in Sources */,
 				FFEEF4FF2939A10200AD5700 /* JokesData.xcdatamodeld in Sources */,
@@ -240,6 +247,7 @@
 				FF8961EE293490A200BF8727 /* PinExtension.swift in Sources */,
 				FF8A19AC292F4AC700AEAA9A /* JokesViewModel.swift in Sources */,
 				FF8961EB29346D9A00BF8727 /* JokesAPI.swift in Sources */,
+				FF1667D329402F2900F36A07 /* JokesDataManager.swift in Sources */,
 				FF87ED0E29399BB300CE930D /* FavoriteButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

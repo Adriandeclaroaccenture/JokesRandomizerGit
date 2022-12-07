@@ -53,9 +53,3 @@ class addFavoriteButton: UIButton {
                 ])
     }
 }
-
-
-
-
-
-

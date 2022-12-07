@@ -10,20 +10,20 @@ import CoreData
 
 class JokeListFavoriteViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     let tableView: UITableView = {
         let table = UITableView()
         table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         return table
     }()
     
-    private var models = [JokesDataList]()
+    private let jokesCoreData = JokesDataManager()
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
 //        title = "Favorite Jokes"
         view.addSubview(tableView)
-        getAllJokes()
+        jokesCoreData.getAllJokes()
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -39,11 +39,11 @@ class JokeListFavoriteViewController: UIViewController, UITableViewDelegate, UIT
         title = "Favorite Jokes"
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return models.count
+        return jokesCoreData.jokesData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let model = models[indexPath.row]
+        let model = jokesCoreData.jokesData[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as! CustomCellTableViewCell
         cell.setup.text = model.setup
         cell.punchline.text = model.punchline
@@ -57,48 +57,11 @@ class JokeListFavoriteViewController: UIViewController, UITableViewDelegate, UIT
     func  tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             tableView.beginUpdates()
-            let model = models[indexPath.row]
-            self.deleteJoke(item: model)
+            let model = jokesCoreData.jokesData[indexPath.row]
+            jokesCoreData.deleteJoke(item: model)
             tableView.deleteRows(at: [indexPath], with: .automatic)
             
             tableView.endUpdates()
         }
     }
-    
-    func getAllJokes() {
-        do {
-            models = try context.fetch(JokesDataList.fetchRequest())
-            
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        } catch {
-            //error
-        }
-    }
-    
-    func addJoke(setup: String, punch: String) {
-        let newJoke = JokesDataList(context: context)
-        newJoke.setup = setup
-        newJoke.punchline = punch
-        
-        saveData()
-    }
-
-    func deleteJoke(item: JokesDataList) {
-        context.delete(item)
-        
-        saveData()
-    }
-    
-    func saveData() {
-        do {
-            try context.save()
-            getAllJokes()
-        } catch {
-            
-        }
-    }
-    
-    
 }
