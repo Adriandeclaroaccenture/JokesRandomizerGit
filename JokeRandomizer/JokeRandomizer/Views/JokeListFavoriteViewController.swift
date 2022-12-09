@@ -13,7 +13,7 @@ class JokeListFavoriteViewController: UIViewController, UITableViewDelegate, UIT
     
     let tableView: UITableView = {
         let table = UITableView()
-        table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        table.register(CustomCellTableViewCell.self, forCellReuseIdentifier: CustomCellTableViewCell.identifier)
         return table
     }()
     

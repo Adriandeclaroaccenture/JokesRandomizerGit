@@ -12,7 +12,6 @@
 		FF1667D52940702C00F36A07 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1667D42940702C00F36A07 /* CustomLabel.swift */; };
 		FF87ED0E29399BB300CE930D /* FavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF87ED0D29399BB300CE930D /* FavoriteButton.swift */; };
 		FF8961E82934542300BF8727 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8961E72934542300BF8727 /* CustomButton.swift */; };
-		FF8961EB29346D9A00BF8727 /* JokesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8961EA29346D9A00BF8727 /* JokesAPI.swift */; };
 		FF8961EE293490A200BF8727 /* PinExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8961ED293490A200BF8727 /* PinExtension.swift */; };
 		FF8961F32934A68200BF8727 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8961F22934A68200BF8727 /* WebService.swift */; };
 		FF8A1994292F11F400AEAA9A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8A1993292F11F400AEAA9A /* AppDelegate.swift */; };
@@ -32,7 +31,6 @@
 		FF1667D42940702C00F36A07 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		FF87ED0D29399BB300CE930D /* FavoriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteButton.swift; sourceTree = "<group>"; };
 		FF8961E72934542300BF8727 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
-		FF8961EA29346D9A00BF8727 /* JokesAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokesAPI.swift; sourceTree = "<group>"; };
 		FF8961ED293490A200BF8727 /* PinExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinExtension.swift; sourceTree = "<group>"; };
 		FF8961F22934A68200BF8727 /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 		FF8A1990292F11F400AEAA9A /* JokeRandomizer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JokeRandomizer.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -98,7 +96,6 @@
 			isa = PBXGroup;
 			children = (
 				FF8961F22934A68200BF8727 /* WebService.swift */,
-				FF8961EA29346D9A00BF8727 /* JokesAPI.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -246,7 +243,6 @@
 				FF8A19AF292F516900AEAA9A /* JokesModel.swift in Sources */,
 				FF8961EE293490A200BF8727 /* PinExtension.swift in Sources */,
 				FF8A19AC292F4AC700AEAA9A /* JokesViewModel.swift in Sources */,
-				FF8961EB29346D9A00BF8727 /* JokesAPI.swift in Sources */,
 				FF1667D329402F2900F36A07 /* JokesDataManager.swift in Sources */,
 				FF87ED0E29399BB300CE930D /* FavoriteButton.swift in Sources */,
 			);

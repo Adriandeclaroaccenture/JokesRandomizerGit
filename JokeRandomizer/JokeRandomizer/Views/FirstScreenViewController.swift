@@ -16,7 +16,8 @@ class FirstScreenViewController: UIViewController {
     private let input: PassthroughSubject<JokesViewModel.Input, Never> = .init()
     private var cancellables = Set<AnyCancellable>()
     var customButton = CustomButton()
-    var addFavButton = addFavoriteButton()
+    var addFavButton = AddFavoriteButton()
+    let addRefreshCustomButtom = FavoriteButtonCustom(style: .refreshButtonJoke, size: .medium, corner: .small, title: "Refresh")
     
     
 //MARK: - setupLabel
@@ -47,7 +48,7 @@ class FirstScreenViewController: UIViewController {
     }()
 //MARK: - Refresh Button
     private lazy var refreshButton: UIButton = {
-        let button = CustomButton(frame: .zero)
+        let button = UIButton()
         let image = UIImage(systemName: "arrow.clockwise.circle.fill")
         button.setImage(image, for: .normal)
         button.addTarget(self, action: #selector(loadButtonJokes), for: .touchUpInside)
@@ -57,7 +58,7 @@ class FirstScreenViewController: UIViewController {
 //MARK: - private let favoriteButton
     private let favoriteButton: UIButton = {
         
-        let faveButton = addFavoriteButton()
+        let faveButton = AddFavoriteButton()
         faveButton.translatesAutoresizingMaskIntoConstraints = false
         let config = UIImage.SymbolConfiguration(pointSize: 32.0, weight: .bold)
         let image = UIImage(systemName: "plus", withConfiguration: config)
@@ -65,6 +66,7 @@ class FirstScreenViewController: UIViewController {
         faveButton.tintColor = .white
         faveButton.backgroundColor = .blue
         faveButton.layer.cornerRadius = 10
+        faveButton.layer.borderWidth = 1.5
         faveButton.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMaxYCorner]
         faveButton.addTarget(self, action: #selector(tapFavorite), for: .touchUpInside)
         faveButton.addTarget(self, action: #selector(showAlertMessage), for: .touchUpInside)
@@ -102,21 +104,16 @@ class FirstScreenViewController: UIViewController {
         view.addSubview(setupLabel)
         view.addSubview(refreshButton)
         view.addSubview(favoriteButton)
-//       refreshButtonConstraints()
         addConstraints()
         navigationJokesItem()
-//        setupConstraints()
-//        addFavButton
         favoriteButtonConstriants()
         setupBinders()
-//        Task {
-//            await populateJokes()
-//        }
+
     }
     
-//MARK: - Private func jokes
+//MARK: - Private func setupBinders
 
-    private func setupBinders(){
+    private func setupBinders() {
         let output = jokesVM.getTransFormJokes(input: input.eraseToAnyPublisher())
         output.sink { [weak self] event in
             switch event{
@@ -129,7 +126,7 @@ class FirstScreenViewController: UIViewController {
                 self?.punchLineLabel.text = error.localizedDescription
             case .toggleButton(let isEnabled):
                 self?.refreshButton.isEnabled = isEnabled
-                self?.refreshButton.backgroundColor = isEnabled ? .systemBlue : .systemGray5
+//                self?.refreshButton.backgroundColor = isEnabled
             case .toggleLoading(let loading):
                 loading ? self?.loader.startAnimating() : self?.loader.stopAnimating()
                 if(loading == false){
@@ -142,39 +139,18 @@ class FirstScreenViewController: UIViewController {
         }
         .store(in: &cancellables)
     }
-//MARK: - placeholder
-//    func setupConstraints(){
-//        [setupLabel,punchLineLabel,loader,favoriteButton,refreshButton].forEach { item in
-//            stackView.addArrangedSubview(item)
-//        }
-//        NSLayoutConstraint.activate([
-//            stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-//            stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-//            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
-//            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
-//
-//
-//            favoriteButton.heightAnchor.constraint(equalToConstant: 50),
-//            favoriteButton.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: 30),
-//            favoriteButton.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: -30),
-//
-//            refreshButton.heightAnchor.constraint(equalToConstant: 50),
-//            refreshButton.leadingAnchor.constraint(equalTo: favoriteButton.leadingAnchor),
-//            refreshButton.trailingAnchor.constraint(equalTo: favoriteButton.trailingAnchor)
-//
-//        ])
-//    }
+
 //MARK: - Constraints for Views in Jokes and Refresh Button
     private func addConstraints() {
    
         setupLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
         setupLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
         setupLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        punchLineLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
-        punchLineLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 10).isActive = true
-        punchLineLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        punchLineLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        refreshButton.topAnchor.constraint(equalTo: setupLabel.bottomAnchor, constant: 10).isActive = true
+        punchLineLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
+        punchLineLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
+        punchLineLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 40).isActive = true
+        punchLineLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 40).isActive = true
+        refreshButton.topAnchor.constraint(equalTo: setupLabel.bottomAnchor, constant: 50).isActive = true
         refreshButton.leadingAnchor.constraint(equalTo: setupLabel.leadingAnchor).isActive = true
         
 
@@ -185,7 +161,7 @@ class FirstScreenViewController: UIViewController {
 
         NSLayoutConstraint.activate([
                     favoriteButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-                    favoriteButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16),
+                    favoriteButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -25),
                     favoriteButton.widthAnchor.constraint(equalToConstant: 44),
                     favoriteButton.heightAnchor.constraint(equalToConstant: 44)
                 ])

@@ -11,6 +11,7 @@ import UIKit
 class CustomCellTableViewCell: UITableViewCell {
     let punchline = UILabel()
     let setup = UILabel()
+    static let identifier = "CustomCell"
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

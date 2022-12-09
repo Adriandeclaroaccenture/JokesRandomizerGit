@@ -36,7 +36,7 @@ class JokesViewModel {
         output.send(.toggleButton(isEnabled: false))
         jokeServiceType.getRandomJokes().sink { [weak self] completion in
             self?.output.send(.toggleLoading(loading: false))
-            self?.output.send(.toggleButton(isEnabled: false))
+            self?.output.send(.toggleButton(isEnabled: true))
             switch completion {
                 case .failure(let errror):
                     self?.output.send(.fetchJokeDidFail(error: errror))
