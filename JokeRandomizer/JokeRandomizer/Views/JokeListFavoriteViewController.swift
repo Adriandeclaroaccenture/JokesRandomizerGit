@@ -60,7 +60,6 @@ class JokeListFavoriteViewController: UIViewController, UITableViewDelegate, UIT
             let model = jokesCoreData.jokesData[indexPath.row]
             jokesCoreData.deleteJoke(item: model)
             tableView.deleteRows(at: [indexPath], with: .automatic)
-            
             tableView.endUpdates()
         }
     }
