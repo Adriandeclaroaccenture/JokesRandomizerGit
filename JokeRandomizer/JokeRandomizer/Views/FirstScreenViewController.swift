@@ -15,63 +15,84 @@ class FirstScreenViewController: UIViewController {
     private let jokesCoreData = JokesDataManager()
     private let input: PassthroughSubject<JokesViewModel.Input, Never> = .init()
     private var cancellables = Set<AnyCancellable>()
-    var customButton = CustomButton()
-    var addFavButton = AddFavoriteButton()
-    let addRefreshCustomButtom = FavoriteButtonCustom(style: .refreshButtonJoke, size: .medium, corner: .small, title: "Refresh")
+    private let refreshButtonView, favoriteButtonView, listButtonView: CustomButton
+    private var setupLabelView, punchlineLabelView: CustomLabel
+//    var customButton = CustomButton()
+//    var addFavButton = AddFavoriteButton()
+
+//MARK: - Initializer
+    init() {
+        refreshButtonView = CustomButton(styles: jokesVM.refreshButtonStyle)
+        favoriteButtonView = CustomButton(styles: jokesVM.favoriteButtonStyle)
+        listButtonView = CustomButton(styles: jokesVM.listButtonStyle)
+        setupLabelView = CustomLabel(styles: jokesVM.setupLabelStyle)
+        punchlineLabelView = CustomLabel(styles: jokesVM.punchlineLabelStyle)
+        super.init(nibName: nil, bundle: nil)
+        refreshButtonView.addTarget(self, action: #selector(loadButtonJokes), for: .touchUpInside)
+        favoriteButtonView.addTarget(self, action: #selector(tapFavorite), for: .touchUpInside)
+        favoriteButtonView.addTarget(self, action: #selector(showAlertMessage), for: .touchUpInside)
+        listButtonView.addTarget(self, action: #selector(tapList), for: .touchUpInside)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: listButtonView)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     
     
 //MARK: - setupLabel
-    private let setupLabel: UILabel = {
-        let stpLabel = UILabel(frame: .zero)
-        stpLabel.frame = CGRect(x: 10.0, y: 40.0, width: UIScreen.main.bounds.size.width - 20.0, height: 100.0)
-        stpLabel.lineBreakMode = .byWordWrapping
-        stpLabel.translatesAutoresizingMaskIntoConstraints = false
-        stpLabel.numberOfLines = 0
-        stpLabel.textAlignment = .left
-        stpLabel.font = UIFont.systemFont(ofSize: 16, weight: .bold)
-        stpLabel.text = "Loading Jokes"
-        stpLabel.sizeToFit()
-        return stpLabel
-    }()
+//    private let setupLabel: UILabel = {
+//        let stpLabel = UILabel(frame: .zero)
+//        stpLabel.frame = CGRect(x: 10.0, y: 40.0, width: UIScreen.main.bounds.size.width - 20.0, height: 100.0)
+//        stpLabel.lineBreakMode = .byWordWrapping
+//        stpLabel.translatesAutoresizingMaskIntoConstraints = false
+//        stpLabel.numberOfLines = 0
+//        stpLabel.textAlignment = .left
+//        stpLabel.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+//        stpLabel.text = "Loading Jokes"
+//        stpLabel.sizeToFit()
+//        return stpLabel
+//    }()
 //MARK: - punchLineLabel
-    private let punchLineLabel: UILabel = {
-        let pnchlLabel = UILabel(frame: .zero)
-        pnchlLabel.frame = CGRect(x: 10.0, y: 40.0, width: UIScreen.main.bounds.size.width - 20.0, height: 100.0)
-        pnchlLabel.translatesAutoresizingMaskIntoConstraints = false
-        pnchlLabel.numberOfLines = 0
-        pnchlLabel.lineBreakMode = .byWordWrapping
-        pnchlLabel.textAlignment = .left
-        pnchlLabel.font = UIFont.systemFont(ofSize: 16, weight: .bold)
-        pnchlLabel.text = " "
-        pnchlLabel.sizeToFit()
-        return pnchlLabel
-    }()
+//    private let punchLineLabel: UILabel = {
+//        let pnchlLabel = UILabel(frame: .zero)
+//        pnchlLabel.frame = CGRect(x: 10.0, y: 40.0, width: UIScreen.main.bounds.size.width - 20.0, height: 100.0)
+//        pnchlLabel.translatesAutoresizingMaskIntoConstraints = false
+//        pnchlLabel.numberOfLines = 0
+//        pnchlLabel.lineBreakMode = .byWordWrapping
+//        pnchlLabel.textAlignment = .left
+//        pnchlLabel.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+//        pnchlLabel.text = " "
+//        pnchlLabel.sizeToFit()
+//        return pnchlLabel
+//    }()
 //MARK: - Refresh Button
-    private lazy var refreshButton: UIButton = {
-        let button = UIButton()
-        let image = UIImage(systemName: "arrow.clockwise.circle.fill")
-        button.setImage(image, for: .normal)
-        button.addTarget(self, action: #selector(loadButtonJokes), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()//refreshbutton
+//    private lazy var refreshButton: UIButton = {
+//        let button = UIButton()
+//        let image = UIImage(systemName: "arrow.clockwise.circle.fill")
+//        button.setImage(image, for: .normal)
+//        button.addTarget(self, action: #selector(loadButtonJokes), for: .touchUpInside)
+//        button.translatesAutoresizingMaskIntoConstraints = false
+//        return button
+//    }()//refreshbutton
 //MARK: - private let favoriteButton
-    private let favoriteButton: UIButton = {
-        
-        let faveButton = AddFavoriteButton()
-        faveButton.translatesAutoresizingMaskIntoConstraints = false
-        let config = UIImage.SymbolConfiguration(pointSize: 32.0, weight: .bold)
-        let image = UIImage(systemName: "plus", withConfiguration: config)
-        faveButton.setImage(image, for: .normal)
-        faveButton.tintColor = .white
-        faveButton.backgroundColor = .blue
-        faveButton.layer.cornerRadius = 10
-        faveButton.layer.borderWidth = 1.5
-        faveButton.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMaxYCorner]
-        faveButton.addTarget(self, action: #selector(tapFavorite), for: .touchUpInside)
-        faveButton.addTarget(self, action: #selector(showAlertMessage), for: .touchUpInside)
-        return faveButton
-    }()
+//    private let favoriteButton: UIButton = {
+//
+//        let faveButton = AddFavoriteButton()
+//        faveButton.translatesAutoresizingMaskIntoConstraints = false
+//        let config = UIImage.SymbolConfiguration(pointSize: 32.0, weight: .bold)
+//        let image = UIImage(systemName: "plus", withConfiguration: config)
+//        faveButton.setImage(image, for: .normal)
+//        faveButton.tintColor = .white
+//        faveButton.backgroundColor = .blue
+//        faveButton.layer.cornerRadius = 10
+//        faveButton.layer.borderWidth = 1.5
+//        faveButton.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMaxYCorner]
+//        faveButton.addTarget(self, action: #selector(tapFavorite), for: .touchUpInside)
+//        faveButton.addTarget(self, action: #selector(showAlertMessage), for: .touchUpInside)
+//        return faveButton
+//    }()
 //MARK: - StackView
     private let stackView: UIStackView = {
         let stack = UIStackView()
@@ -100,10 +121,9 @@ class FirstScreenViewController: UIViewController {
         title = "Jokes Randomizer"
         navigationController?.navigationBar.prefersLargeTitles = true
         
-//MARK: - Views
-        view.addSubview(setupLabel)
-        view.addSubview(refreshButton)
-        view.addSubview(favoriteButton)
+//        view.addSubview(setupLabel)
+//        view.addSubview(refreshButton)
+//        view.addSubview(favoriteButton)
         addConstraints()
         navigationJokesItem()
         favoriteButtonConstriants()
@@ -119,21 +139,20 @@ class FirstScreenViewController: UIViewController {
             switch event{
             case .fetchJokeSucceed(let joke):
                 guard let joke = joke.randomElement() else {return}
-                self?.setupLabel.text = joke.setup
-                self?.punchLineLabel.text = joke.punchline
+                self?.setupLabelView.text = joke.setup
+                self?.punchlineLabelView.text = joke.punchline
             case .fetchJokeDidFail(let error):
-                self?.setupLabel.text = error.localizedDescription
-                self?.punchLineLabel.text = error.localizedDescription
-            case .toggleButton(let isEnabled):
-                self?.refreshButton.isEnabled = isEnabled
-//                self?.refreshButton.backgroundColor = isEnabled
-            case .toggleLoading(let loading):
-                loading ? self?.loader.startAnimating() : self?.loader.stopAnimating()
-                if(loading == false){
-                    self?.setupLabel.isHidden = false
-                    self?.punchLineLabel.isHidden = false
-                    self?.loader.isHidden = true
-                }
+                self?.setupLabelView.text = error.localizedDescription
+                self?.punchlineLabelView.text = error.localizedDescription
+//            case .toggleButton(let isEnabled):
+//                self?.refreshButtonView.isEnabled = isEnabled
+//            case .toggleLoading(let loading):
+//                loading ? self?.loader.startAnimating() : self?.loader.stopAnimating()
+//                if(loading == false){
+//                    self?.setupLabelView.isHidden = false
+//                    self?.punchlineLabelView.isHidden = false
+//                    self?.loader.isHidden = true
+//                }
                 
             }
         }
@@ -143,15 +162,15 @@ class FirstScreenViewController: UIViewController {
 //MARK: - Constraints for Views in Jokes and Refresh Button
     private func addConstraints() {
    
-        setupLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
-        setupLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
-        setupLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        punchLineLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
-        punchLineLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
-        punchLineLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 40).isActive = true
-        punchLineLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 40).isActive = true
-        refreshButton.topAnchor.constraint(equalTo: setupLabel.bottomAnchor, constant: 50).isActive = true
-        refreshButton.leadingAnchor.constraint(equalTo: setupLabel.leadingAnchor).isActive = true
+        setupLabelView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
+        setupLabelView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
+        setupLabelView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        punchlineLabelView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
+        punchlineLabelView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
+        punchlineLabelView.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 40).isActive = true
+        punchlineLabelView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 40).isActive = true
+        refreshButtonView.topAnchor.constraint(equalTo: setupLabelView.bottomAnchor, constant: 50).isActive = true
+        refreshButtonView.leadingAnchor.constraint(equalTo: setupLabelView.leadingAnchor).isActive = true
         
 
     }
@@ -160,10 +179,10 @@ class FirstScreenViewController: UIViewController {
     func favoriteButtonConstriants() {
 
         NSLayoutConstraint.activate([
-                    favoriteButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-                    favoriteButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -25),
-                    favoriteButton.widthAnchor.constraint(equalToConstant: 44),
-                    favoriteButton.heightAnchor.constraint(equalToConstant: 44)
+                    favoriteButtonView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+                    favoriteButtonView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -25),
+                    favoriteButtonView.widthAnchor.constraint(equalToConstant: 44),
+                    favoriteButtonView.heightAnchor.constraint(equalToConstant: 44)
                 ])
     }
 
@@ -182,7 +201,7 @@ class FirstScreenViewController: UIViewController {
     }
 //MARK: - obj func tapFavorite
     @objc func tapFavorite() {
-        jokesCoreData.addJoke(setup: setupLabel.text!, punch: punchLineLabel.text!)
+        jokesCoreData.addJoke(setup: setupLabelView.text!, punch: punchlineLabelView.text!)
         debugPrint("Added Favorites Joke")
     }
 //MARK: - objc func tapList
@@ -193,7 +212,7 @@ class FirstScreenViewController: UIViewController {
 //MARK: - Func loadView
     override func loadView() {
         super.loadView()
-        [stackView,setupLabel,punchLineLabel,loader,favoriteButton,refreshButton].forEach { item in
+        [stackView,setupLabelView,punchlineLabelView,loader,favoriteButtonView,refreshButtonView].forEach { item in
             self.view.addSubview(item)
             item.translatesAutoresizingMaskIntoConstraints = false
         }

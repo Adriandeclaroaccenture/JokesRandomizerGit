@@ -21,14 +21,12 @@ class JokeListFavoriteViewController: UIViewController, UITableViewDelegate, UIT
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-//        title = "Favorite Jokes"
         view.addSubview(tableView)
         jokesCoreData.getAllJokes()
         
         tableView.delegate = self
         tableView.dataSource = self
         tableView.frame = view.bounds
-//        tableView.estimatedRowHeight = 55.0
         tableView.register(CustomCellTableViewCell.self, forCellReuseIdentifier: "customCell")
         tableView.rowHeight = 100
         tableView.tableFooterView = UIView()

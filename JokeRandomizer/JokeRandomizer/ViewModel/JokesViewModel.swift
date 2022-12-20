@@ -11,6 +11,8 @@ import Combine
 
 class JokesViewModel {
     private var cancellables = Set<AnyCancellable>()
+    var refreshButtonStyle, favoriteButtonStyle, listButtonStyle: CustomButton.ButtonTypes
+    var setupLabelStyle, punchlineLabelStyle: CustomLabel.LabelTypes
     
     enum Input {
         case viewDidAppear
@@ -20,8 +22,8 @@ class JokesViewModel {
     enum Output {
         case fetchJokeDidFail(error: Error)
         case fetchJokeSucceed(jokes: [JokesModel])
-        case toggleButton(isEnabled: Bool)
-        case toggleLoading(loading: Bool)
+//        case toggleButton(isEnabled: Bool)
+//        case toggleLoading(loading: Bool)
     }
     
     private let jokeServiceType: JokesServiceType
@@ -29,14 +31,19 @@ class JokesViewModel {
     
     init(jokeServiceType: JokesServiceType = WebService()) {
         self.jokeServiceType = jokeServiceType
+        refreshButtonStyle = .refreshButton
+        favoriteButtonStyle = .favoriteButton
+        listButtonStyle = .listButton
+        setupLabelStyle = .setupLabel
+        punchlineLabelStyle = .punchlineLabel
     }
 //MARK: - Func getRandomJokes
     func getRandomJokes() {
-        output.send(.toggleLoading(loading: true))
-        output.send(.toggleButton(isEnabled: false))
+//        output.send(.toggleLoading(loading: true))
+//        output.send(.toggleButton(isEnabled: false))
         jokeServiceType.getRandomJokes().sink { [weak self] completion in
-            self?.output.send(.toggleLoading(loading: false))
-            self?.output.send(.toggleButton(isEnabled: true))
+//            self?.output.send(.toggleLoading(loading: false))
+//            self?.output.send(.toggleButton(isEnabled: true))
             switch completion {
                 case .failure(let errror):
                     self?.output.send(.fetchJokeDidFail(error: errror))
