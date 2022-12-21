@@ -9,6 +9,7 @@ import UIKit
 import Combine
 import CoreData
 
+
 class FirstScreenViewController: UIViewController {
 //MARK: - Property
     private let jokesVM = JokesViewModel()
@@ -17,8 +18,7 @@ class FirstScreenViewController: UIViewController {
     private var cancellables = Set<AnyCancellable>()
     private let refreshButtonView, favoriteButtonView, listButtonView: CustomButton
     private var setupLabelView, punchlineLabelView: CustomLabel
-//    var customButton = CustomButton()
-//    var addFavButton = AddFavoriteButton()
+
 
 //MARK: - Initializer
     init() {
@@ -38,99 +38,41 @@ class FirstScreenViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    
-    
-//MARK: - setupLabel
-//    private let setupLabel: UILabel = {
-//        let stpLabel = UILabel(frame: .zero)
-//        stpLabel.frame = CGRect(x: 10.0, y: 40.0, width: UIScreen.main.bounds.size.width - 20.0, height: 100.0)
-//        stpLabel.lineBreakMode = .byWordWrapping
-//        stpLabel.translatesAutoresizingMaskIntoConstraints = false
-//        stpLabel.numberOfLines = 0
-//        stpLabel.textAlignment = .left
-//        stpLabel.font = UIFont.systemFont(ofSize: 16, weight: .bold)
-//        stpLabel.text = "Loading Jokes"
-//        stpLabel.sizeToFit()
-//        return stpLabel
-//    }()
-//MARK: - punchLineLabel
-//    private let punchLineLabel: UILabel = {
-//        let pnchlLabel = UILabel(frame: .zero)
-//        pnchlLabel.frame = CGRect(x: 10.0, y: 40.0, width: UIScreen.main.bounds.size.width - 20.0, height: 100.0)
-//        pnchlLabel.translatesAutoresizingMaskIntoConstraints = false
-//        pnchlLabel.numberOfLines = 0
-//        pnchlLabel.lineBreakMode = .byWordWrapping
-//        pnchlLabel.textAlignment = .left
-//        pnchlLabel.font = UIFont.systemFont(ofSize: 16, weight: .bold)
-//        pnchlLabel.text = " "
-//        pnchlLabel.sizeToFit()
-//        return pnchlLabel
-//    }()
-//MARK: - Refresh Button
-//    private lazy var refreshButton: UIButton = {
-//        let button = UIButton()
-//        let image = UIImage(systemName: "arrow.clockwise.circle.fill")
-//        button.setImage(image, for: .normal)
-//        button.addTarget(self, action: #selector(loadButtonJokes), for: .touchUpInside)
-//        button.translatesAutoresizingMaskIntoConstraints = false
-//        return button
-//    }()//refreshbutton
-//MARK: - private let favoriteButton
-//    private let favoriteButton: UIButton = {
-//
-//        let faveButton = AddFavoriteButton()
-//        faveButton.translatesAutoresizingMaskIntoConstraints = false
-//        let config = UIImage.SymbolConfiguration(pointSize: 32.0, weight: .bold)
-//        let image = UIImage(systemName: "plus", withConfiguration: config)
-//        faveButton.setImage(image, for: .normal)
-//        faveButton.tintColor = .white
-//        faveButton.backgroundColor = .blue
-//        faveButton.layer.cornerRadius = 10
-//        faveButton.layer.borderWidth = 1.5
-//        faveButton.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMaxYCorner]
-//        faveButton.addTarget(self, action: #selector(tapFavorite), for: .touchUpInside)
-//        faveButton.addTarget(self, action: #selector(showAlertMessage), for: .touchUpInside)
-//        return faveButton
-//    }()
-//MARK: - StackView
-    private let stackView: UIStackView = {
-        let stack = UIStackView()
-        stack.spacing = 25.0
-        stack.axis = .vertical
-        stack.alignment = .center
-        stack.distribution = .equalSpacing
-        return stack
-    }()
-    
-//MARK: - Navigation
-    private func navigationJokesItem() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "list.bullet.circle"), style: .plain, target: self, action: #selector(tapList))
-    }
-//MARK: - loader
-    let loader: UIActivityIndicatorView = {
-        var loader = UIActivityIndicatorView(frame: .zero)
-        loader.style = .medium
-        return loader
-    }()
-    
+
+
 //MARK: - viewDidLoad Function
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         title = "Jokes Randomizer"
         navigationController?.navigationBar.prefersLargeTitles = true
-        
-//        view.addSubview(setupLabel)
-//        view.addSubview(refreshButton)
-//        view.addSubview(favoriteButton)
         addConstraints()
         navigationJokesItem()
         favoriteButtonConstriants()
         setupBinders()
 
     }
-    
+    //MARK: - StackView
+        private let stackView: UIStackView = {
+            let stack = UIStackView()
+            stack.spacing = 25.0
+            stack.axis = .vertical
+            stack.alignment = .center
+            stack.distribution = .equalSpacing
+            return stack
+        }()
+        
+    //MARK: - Navigation
+        private func navigationJokesItem() {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "list.bullet.circle"), style: .plain, target: self, action: #selector(tapList))
+        }
+    //MARK: - loader
+        let loader: UIActivityIndicatorView = {
+            var loader = UIActivityIndicatorView(frame: .zero)
+            loader.style = .medium
+            return loader
+        }()
+        
 //MARK: - Private func setupBinders
 
     private func setupBinders() {
@@ -144,15 +86,6 @@ class FirstScreenViewController: UIViewController {
             case .fetchJokeDidFail(let error):
                 self?.setupLabelView.text = error.localizedDescription
                 self?.punchlineLabelView.text = error.localizedDescription
-//            case .toggleButton(let isEnabled):
-//                self?.refreshButtonView.isEnabled = isEnabled
-//            case .toggleLoading(let loading):
-//                loading ? self?.loader.startAnimating() : self?.loader.stopAnimating()
-//                if(loading == false){
-//                    self?.setupLabelView.isHidden = false
-//                    self?.punchlineLabelView.isHidden = false
-//                    self?.loader.isHidden = true
-//                }
                 
             }
         }
