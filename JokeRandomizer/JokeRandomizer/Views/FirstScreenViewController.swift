@@ -14,11 +14,9 @@ class FirstScreenViewController: UIViewController {
     private let jokesVM = JokesViewModel()
     private let jokesCoreData = JokesDataManager()
     private let input: PassthroughSubject<JokesViewModel.Input, Never> = .init()
-    private var cancellables = Set<AnyCancellable>()
     private let refreshButtonView, favoriteButtonView, listButtonView: CustomButton
+    private var cancellables = Set<AnyCancellable>()
     private var setupLabelView, punchlineLabelView: CustomLabel
-
-
 //MARK: - Initializer
     init() {
         refreshButtonView = CustomButton(styles: jokesVM.refreshButtonStyle)
@@ -37,20 +35,15 @@ class FirstScreenViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    
-    
-
 //MARK: - StackView
-    private let stackView: UIStackView = {
-        let stack = UIStackView()
-        stack.spacing = 25.0
-        stack.axis = .vertical
-        stack.alignment = .center
-        stack.distribution = .equalSpacing
-        return stack
-    }()
-    
+//    private let stackView: UIStackView = {
+//        let stack = UIStackView()
+//        stack.spacing = 25.0
+//        stack.axis = .vertical
+//        stack.alignment = .center
+//        stack.distribution = .equalSpacing
+//        return stack
+//    }()
 //MARK: - Navigation
     private func navigationJokesItem() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "list.bullet.circle"), style: .plain, target: self, action: #selector(tapList))
@@ -73,9 +66,7 @@ class FirstScreenViewController: UIViewController {
         navigationJokesItem()
         favoriteButtonConstriants()
         setupBinders()
-
     }
-    
 //MARK: - Private func setupBinders
 
     private func setupBinders() {
@@ -89,12 +80,10 @@ class FirstScreenViewController: UIViewController {
             case .fetchJokeDidFail(let error):
                 self?.setupLabelView.text = error.localizedDescription
                 self?.punchlineLabelView.text = error.localizedDescription
-                
             }
         }
         .store(in: &cancellables)
     }
-
 //MARK: - Constraints for Views in Jokes and Refresh Button
     private func addConstraints() {
    
@@ -107,10 +96,7 @@ class FirstScreenViewController: UIViewController {
         punchlineLabelView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 40).isActive = true
         refreshButtonView.topAnchor.constraint(equalTo: setupLabelView.bottomAnchor, constant: 50).isActive = true
         refreshButtonView.leadingAnchor.constraint(equalTo: setupLabelView.leadingAnchor).isActive = true
-        
-
     }
-
 //MARK: - Favorite Button Constraints
     func favoriteButtonConstriants() {
 
@@ -121,7 +107,6 @@ class FirstScreenViewController: UIViewController {
                     favoriteButtonView.heightAnchor.constraint(equalToConstant: 44)
                 ])
     }
-
 //MARK: - faveJoke Alert Message
     @objc func showAlertMessage() {
 
@@ -148,7 +133,8 @@ class FirstScreenViewController: UIViewController {
 //MARK: - Func loadView
     override func loadView() {
         super.loadView()
-        [stackView,setupLabelView,punchlineLabelView,loader,favoriteButtonView,refreshButtonView].forEach { item in
+//        stackView,
+        [setupLabelView,punchlineLabelView,loader,favoriteButtonView,refreshButtonView].forEach { item in
             self.view.addSubview(item)
             item.translatesAutoresizingMaskIntoConstraints = false
         }
@@ -158,6 +144,4 @@ class FirstScreenViewController: UIViewController {
         super.viewDidAppear(animated)
         input.send(.viewDidAppear)
     }
-
 }
-

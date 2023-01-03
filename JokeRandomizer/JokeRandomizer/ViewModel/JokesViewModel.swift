@@ -11,8 +11,8 @@ import Combine
 
 class JokesViewModel {
     private var cancellables = Set<AnyCancellable>()
-    var refreshButtonStyle, favoriteButtonStyle, listButtonStyle: CustomButton.ButtonTypes
-    var setupLabelStyle, punchlineLabelStyle: CustomLabel.LabelTypes
+    let refreshButtonStyle, favoriteButtonStyle, listButtonStyle: CustomButton.ButtonTypes
+    let setupLabelStyle, punchlineLabelStyle: CustomLabel.LabelTypes
     
     enum Input {
         case viewDidAppear
