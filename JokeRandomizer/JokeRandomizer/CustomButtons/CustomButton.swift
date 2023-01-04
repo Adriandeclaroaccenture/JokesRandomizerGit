@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Foundation
 
 class CustomButton: UIButton {
     
@@ -65,5 +66,23 @@ class CustomButton: UIButton {
         shake.fromValue = fromValue
         shake.toValue = toValue
         layer.add(shake, forKey: "position")
+    }
+}
+
+struct Design {
+    struct Color {
+        struct Primary{
+            static let Blue = UIColor.rgba(red: 0, green: 122, blue: 255, alpha: 1)
+            static let Black = UIColor.rgba(red: 21, green: 23, blue: 33, alpha: 1)
+        }
+    }
+    struct Font {
+        static let Fontbody = UIFont.systemFont(ofSize: 15, weight: .semibold)
+    }
+}
+
+extension UIColor {
+    static func rgba(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) -> UIColor {
+        return UIColor(red: red/255, green: green/255, blue: blue/255, alpha: alpha)
     }
 }
