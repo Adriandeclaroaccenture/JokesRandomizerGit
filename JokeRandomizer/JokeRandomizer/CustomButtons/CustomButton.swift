@@ -24,17 +24,17 @@ class CustomButton: UIButton {
         switch styles {
         case .refreshButton:
             super.init(frame: .zero)
-            setImage(UIImage(systemName: "arrow.clockwise.circle.fill"), for: .normal)
+            setImage(Design.Image.refresh_image, for: .normal)
             defaultProperties()
             
         case .favoriteButton:
             super.init(frame: .zero)
-            setImage(UIImage(systemName: "plus"), for: .normal)
+            setImage(Design.Image.add_image, for: .normal)
             defaultProperties()
             shakeFavorite()
         case .listButton:
             super.init(frame: .zero)
-            setImage(UIImage(systemName: "list.bullet.circle" ), for: .normal)
+            setImage(Design.Image.list_image, for: .normal)
         }
     }
     
@@ -69,20 +69,3 @@ class CustomButton: UIButton {
     }
 }
 
-struct Design {
-    struct Color {
-        struct Primary{
-            static let Blue = UIColor.rgba(red: 0, green: 122, blue: 255, alpha: 1)
-            static let Black = UIColor.rgba(red: 21, green: 23, blue: 33, alpha: 1)
-        }
-    }
-    struct Font {
-        static let Fontbody = UIFont.systemFont(ofSize: 15, weight: .semibold)
-    }
-}
-
-extension UIColor {
-    static func rgba(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) -> UIColor {
-        return UIColor(red: red/255, green: green/255, blue: blue/255, alpha: alpha)
-    }
-}

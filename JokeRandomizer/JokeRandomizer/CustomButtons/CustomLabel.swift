@@ -24,6 +24,7 @@ class CustomLabel: UILabel {
             text = "Loading Joke"
         case .punchlineLabel:
             super.init(frame: .zero)
+            self.textColor = .default_blue
             text = ""
         }
         defaultProperties()

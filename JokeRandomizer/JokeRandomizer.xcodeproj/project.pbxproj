@@ -11,6 +11,7 @@
 		FF1667D329402F2900F36A07 /* JokesDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1667D229402F2900F36A07 /* JokesDataManager.swift */; };
 		FF1667D52940702C00F36A07 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1667D42940702C00F36A07 /* CustomLabel.swift */; };
 		FF31CDF92963DE7C009631BE /* StackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF31CDF82963DE7C009631BE /* StackView.swift */; };
+		FF4119222966BF2500F78FC5 /* AppConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4119212966BF2500F78FC5 /* AppConstant.swift */; };
 		FF8961E82934542300BF8727 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8961E72934542300BF8727 /* CustomButton.swift */; };
 		FF8961EE293490A200BF8727 /* PinExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8961ED293490A200BF8727 /* PinExtension.swift */; };
 		FF8961F32934A68200BF8727 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8961F22934A68200BF8727 /* WebService.swift */; };
@@ -30,6 +31,7 @@
 		FF1667D229402F2900F36A07 /* JokesDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokesDataManager.swift; sourceTree = "<group>"; };
 		FF1667D42940702C00F36A07 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		FF31CDF82963DE7C009631BE /* StackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackView.swift; sourceTree = "<group>"; };
+		FF4119212966BF2500F78FC5 /* AppConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstant.swift; sourceTree = "<group>"; };
 		FF8961E72934542300BF8727 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		FF8961ED293490A200BF8727 /* PinExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinExtension.swift; sourceTree = "<group>"; };
 		FF8961F22934A68200BF8727 /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 			children = (
 				FF8961E72934542300BF8727 /* CustomButton.swift */,
 				FF1667D42940702C00F36A07 /* CustomLabel.swift */,
+				FF4119212966BF2500F78FC5 /* AppConstant.swift */,
 			);
 			path = CustomButtons;
 			sourceTree = "<group>";
@@ -237,6 +240,7 @@
 				FF8A1998292F11F400AEAA9A /* FirstScreenViewController.swift in Sources */,
 				FF0E19F729389037007A77C0 /* CustomCellTableViewCell.swift in Sources */,
 				FFEEF4FF2939A10200AD5700 /* JokesData.xcdatamodeld in Sources */,
+				FF4119222966BF2500F78FC5 /* AppConstant.swift in Sources */,
 				FFEEF5052939A3AB00AD5700 /* JokeListFavoriteViewController.swift in Sources */,
 				FF8A1994292F11F400AEAA9A /* AppDelegate.swift in Sources */,
 				FF8A1996292F11F400AEAA9A /* SceneDelegate.swift in Sources */,
