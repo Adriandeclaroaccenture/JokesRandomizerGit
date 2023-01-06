@@ -7,57 +7,45 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FF0E19E8293864AC007A77C0 /* AddNewItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0E19E7293864AC007A77C0 /* AddNewItemViewController.swift */; };
-		FF0E19EA29386D3E007A77C0 /* ToDoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0E19E929386D3E007A77C0 /* ToDoTableViewCell.swift */; };
-		FF0E19EC29386FB7007A77C0 /* ToDoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0E19EB29386FB7007A77C0 /* ToDoListViewController.swift */; };
-		FF0E19F729389037007A77C0 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0E19F629389037007A77C0 /* CustomCell.swift */; };
-		FF12F7562935FD9F00157D62 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF12F7552935FD9F00157D62 /* CoreDataManager.swift */; };
-		FF12F7582936021F00157D62 /* CoreDataManagerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF12F7572936021F00157D62 /* CoreDataManagerExtension.swift */; };
-		FF12F75B293602F400157D62 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF12F75A293602F400157D62 /* DataProvider.swift */; };
-		FF87ED0E29399BB300CE930D /* FavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF87ED0D29399BB300CE930D /* FavoriteButton.swift */; };
+		FF0E19F729389037007A77C0 /* CustomCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0E19F629389037007A77C0 /* CustomCellTableViewCell.swift */; };
+		FF1667D329402F2900F36A07 /* JokesDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1667D229402F2900F36A07 /* JokesDataManager.swift */; };
+		FF1667D52940702C00F36A07 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1667D42940702C00F36A07 /* CustomLabel.swift */; };
+		FF31CDF92963DE7C009631BE /* StackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF31CDF82963DE7C009631BE /* StackView.swift */; };
+		FF4119222966BF2500F78FC5 /* AppConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4119212966BF2500F78FC5 /* AppConstant.swift */; };
 		FF8961E82934542300BF8727 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8961E72934542300BF8727 /* CustomButton.swift */; };
-		FF8961EB29346D9A00BF8727 /* JokesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8961EA29346D9A00BF8727 /* JokesAPI.swift */; };
 		FF8961EE293490A200BF8727 /* PinExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8961ED293490A200BF8727 /* PinExtension.swift */; };
-		FF8961F02934992A00BF8727 /* FolderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8961EF2934992A00BF8727 /* FolderTableViewCell.swift */; };
 		FF8961F32934A68200BF8727 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8961F22934A68200BF8727 /* WebService.swift */; };
 		FF8A1994292F11F400AEAA9A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8A1993292F11F400AEAA9A /* AppDelegate.swift */; };
 		FF8A1996292F11F400AEAA9A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8A1995292F11F400AEAA9A /* SceneDelegate.swift */; };
-		FF8A1998292F11F400AEAA9A /* FirstScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8A1997292F11F400AEAA9A /* FirstScreen.swift */; };
+		FF8A1998292F11F400AEAA9A /* FirstScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8A1997292F11F400AEAA9A /* FirstScreenViewController.swift */; };
 		FF8A199D292F11F800AEAA9A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF8A199C292F11F800AEAA9A /* Assets.xcassets */; };
 		FF8A19A0292F11F800AEAA9A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF8A199E292F11F800AEAA9A /* LaunchScreen.storyboard */; };
-		FF8A19A8292F452A00AEAA9A /* FolderListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8A19A7292F452A00AEAA9A /* FolderListViewController.swift */; };
 		FF8A19AC292F4AC700AEAA9A /* JokesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8A19AB292F4AC700AEAA9A /* JokesViewModel.swift */; };
-		FF8A19AF292F516900AEAA9A /* Jokes.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8A19AE292F516900AEAA9A /* Jokes.swift */; };
+		FF8A19AF292F516900AEAA9A /* JokesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8A19AE292F516900AEAA9A /* JokesModel.swift */; };
 		FFEEF4FF2939A10200AD5700 /* JokesData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FFEEF4FD2939A10200AD5700 /* JokesData.xcdatamodeld */; };
-		FFEEF5052939A3AB00AD5700 /* JokeListFavorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFEEF5042939A3AB00AD5700 /* JokeListFavorite.swift */; };
+		FFEEF5052939A3AB00AD5700 /* JokeListFavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFEEF5042939A3AB00AD5700 /* JokeListFavoriteViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		FF0E19E7293864AC007A77C0 /* AddNewItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewItemViewController.swift; sourceTree = "<group>"; };
-		FF0E19E929386D3E007A77C0 /* ToDoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableViewCell.swift; sourceTree = "<group>"; };
-		FF0E19EB29386FB7007A77C0 /* ToDoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListViewController.swift; sourceTree = "<group>"; };
-		FF0E19F629389037007A77C0 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
-		FF12F7552935FD9F00157D62 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
-		FF12F7572936021F00157D62 /* CoreDataManagerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManagerExtension.swift; sourceTree = "<group>"; };
-		FF12F75A293602F400157D62 /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
-		FF87ED0D29399BB300CE930D /* FavoriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteButton.swift; sourceTree = "<group>"; };
+		FF0E19F629389037007A77C0 /* CustomCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCellTableViewCell.swift; sourceTree = "<group>"; };
+		FF1667D229402F2900F36A07 /* JokesDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokesDataManager.swift; sourceTree = "<group>"; };
+		FF1667D42940702C00F36A07 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
+		FF31CDF82963DE7C009631BE /* StackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackView.swift; sourceTree = "<group>"; };
+		FF4119212966BF2500F78FC5 /* AppConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstant.swift; sourceTree = "<group>"; };
 		FF8961E72934542300BF8727 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
-		FF8961EA29346D9A00BF8727 /* JokesAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokesAPI.swift; sourceTree = "<group>"; };
 		FF8961ED293490A200BF8727 /* PinExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinExtension.swift; sourceTree = "<group>"; };
-		FF8961EF2934992A00BF8727 /* FolderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderTableViewCell.swift; sourceTree = "<group>"; };
 		FF8961F22934A68200BF8727 /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 		FF8A1990292F11F400AEAA9A /* JokeRandomizer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JokeRandomizer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF8A1993292F11F400AEAA9A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF8A1995292F11F400AEAA9A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		FF8A1997292F11F400AEAA9A /* FirstScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstScreen.swift; sourceTree = "<group>"; };
+		FF8A1997292F11F400AEAA9A /* FirstScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstScreenViewController.swift; sourceTree = "<group>"; };
 		FF8A199C292F11F800AEAA9A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FF8A199F292F11F800AEAA9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FF8A19A1292F11F800AEAA9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FF8A19A7292F452A00AEAA9A /* FolderListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderListViewController.swift; sourceTree = "<group>"; };
 		FF8A19AB292F4AC700AEAA9A /* JokesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokesViewModel.swift; sourceTree = "<group>"; };
-		FF8A19AE292F516900AEAA9A /* Jokes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Jokes.swift; sourceTree = "<group>"; };
+		FF8A19AE292F516900AEAA9A /* JokesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokesModel.swift; sourceTree = "<group>"; };
 		FFEEF4FE2939A10200AD5700 /* JokesData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = JokesData.xcdatamodel; sourceTree = "<group>"; };
-		FFEEF5042939A3AB00AD5700 /* JokeListFavorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeListFavorite.swift; sourceTree = "<group>"; };
+		FFEEF5042939A3AB00AD5700 /* JokeListFavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeListFavoriteViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,53 +62,35 @@
 		FF0E19E62938642A007A77C0 /* SubViews */ = {
 			isa = PBXGroup;
 			children = (
-				FF0E19F629389037007A77C0 /* CustomCell.swift */,
-				FF0E19E7293864AC007A77C0 /* AddNewItemViewController.swift */,
-				FF0E19E929386D3E007A77C0 /* ToDoTableViewCell.swift */,
-				FF0E19EB29386FB7007A77C0 /* ToDoListViewController.swift */,
+				FF31CDF82963DE7C009631BE /* StackView.swift */,
+				FF0E19F629389037007A77C0 /* CustomCellTableViewCell.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
 		};
-		FF12F7502935E01000157D62 /* Buttons */ = {
+		FF12F7502935E01000157D62 /* CustomButtons */ = {
 			isa = PBXGroup;
 			children = (
 				FF8961E72934542300BF8727 /* CustomButton.swift */,
-				FF87ED0D29399BB300CE930D /* FavoriteButton.swift */,
+				FF1667D42940702C00F36A07 /* CustomLabel.swift */,
+				FF4119212966BF2500F78FC5 /* AppConstant.swift */,
 			);
-			path = Buttons;
+			path = CustomButtons;
 			sourceTree = "<group>";
 		};
 		FF12F7542935FD8800157D62 /* Database */ = {
 			isa = PBXGroup;
 			children = (
 				FFEEF4FD2939A10200AD5700 /* JokesData.xcdatamodeld */,
-				FF12F7552935FD9F00157D62 /* CoreDataManager.swift */,
+				FF1667D229402F2900F36A07 /* JokesDataManager.swift */,
 			);
 			path = Database;
-			sourceTree = "<group>";
-		};
-		FF12F759293602D700157D62 /* Generic Classess */ = {
-			isa = PBXGroup;
-			children = (
-				FF12F75A293602F400157D62 /* DataProvider.swift */,
-			);
-			path = "Generic Classess";
-			sourceTree = "<group>";
-		};
-		FF8961E929346D7E00BF8727 /* API */ = {
-			isa = PBXGroup;
-			children = (
-				FF8961EA29346D9A00BF8727 /* JokesAPI.swift */,
-			);
-			path = API;
 			sourceTree = "<group>";
 		};
 		FF8961EC2934908E00BF8727 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
 				FF8961ED293490A200BF8727 /* PinExtension.swift */,
-				FF12F7572936021F00157D62 /* CoreDataManagerExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -157,12 +127,10 @@
 				FF8A19A9292F462400AEAA9A /* Views */,
 				FF8A19AD292F515B00AEAA9A /* Model */,
 				FF8A19AA292F4AA900AEAA9A /* ViewModel */,
-				FF8961E929346D7E00BF8727 /* API */,
 				FF8961EC2934908E00BF8727 /* Extension */,
 				FF8961F12934A67200BF8727 /* Services */,
-				FF12F7502935E01000157D62 /* Buttons */,
+				FF12F7502935E01000157D62 /* CustomButtons */,
 				FF12F7542935FD8800157D62 /* Database */,
-				FF12F759293602D700157D62 /* Generic Classess */,
 				FF8A199C292F11F800AEAA9A /* Assets.xcassets */,
 				FF8A199E292F11F800AEAA9A /* LaunchScreen.storyboard */,
 				FF8A19A1292F11F800AEAA9A /* Info.plist */,
@@ -173,10 +141,8 @@
 		FF8A19A9292F462400AEAA9A /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				FF8A1997292F11F400AEAA9A /* FirstScreen.swift */,
-				FFEEF5042939A3AB00AD5700 /* JokeListFavorite.swift */,
-				FF8A19A7292F452A00AEAA9A /* FolderListViewController.swift */,
-				FF8961EF2934992A00BF8727 /* FolderTableViewCell.swift */,
+				FF8A1997292F11F400AEAA9A /* FirstScreenViewController.swift */,
+				FFEEF5042939A3AB00AD5700 /* JokeListFavoriteViewController.swift */,
 				FF0E19E62938642A007A77C0 /* SubViews */,
 			);
 			path = Views;
@@ -193,7 +159,7 @@
 		FF8A19AD292F515B00AEAA9A /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				FF8A19AE292F516900AEAA9A /* Jokes.swift */,
+				FF8A19AE292F516900AEAA9A /* JokesModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -269,26 +235,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF8961F32934A68200BF8727 /* WebService.swift in Sources */,
-				FF8961F02934992A00BF8727 /* FolderTableViewCell.swift in Sources */,
-				FF0E19E8293864AC007A77C0 /* AddNewItemViewController.swift in Sources */,
-				FF12F7582936021F00157D62 /* CoreDataManagerExtension.swift in Sources */,
-				FF8A1998292F11F400AEAA9A /* FirstScreen.swift in Sources */,
-				FF0E19F729389037007A77C0 /* CustomCell.swift in Sources */,
+				FF31CDF92963DE7C009631BE /* StackView.swift in Sources */,
+				FF1667D52940702C00F36A07 /* CustomLabel.swift in Sources */,
+				FF8A1998292F11F400AEAA9A /* FirstScreenViewController.swift in Sources */,
+				FF0E19F729389037007A77C0 /* CustomCellTableViewCell.swift in Sources */,
 				FFEEF4FF2939A10200AD5700 /* JokesData.xcdatamodeld in Sources */,
-				FFEEF5052939A3AB00AD5700 /* JokeListFavorite.swift in Sources */,
-				FF8A19A8292F452A00AEAA9A /* FolderListViewController.swift in Sources */,
+				FF4119222966BF2500F78FC5 /* AppConstant.swift in Sources */,
+				FFEEF5052939A3AB00AD5700 /* JokeListFavoriteViewController.swift in Sources */,
 				FF8A1994292F11F400AEAA9A /* AppDelegate.swift in Sources */,
-				FF0E19EC29386FB7007A77C0 /* ToDoListViewController.swift in Sources */,
 				FF8A1996292F11F400AEAA9A /* SceneDelegate.swift in Sources */,
 				FF8961E82934542300BF8727 /* CustomButton.swift in Sources */,
-				FF12F7562935FD9F00157D62 /* CoreDataManager.swift in Sources */,
-				FF0E19EA29386D3E007A77C0 /* ToDoTableViewCell.swift in Sources */,
-				FF8A19AF292F516900AEAA9A /* Jokes.swift in Sources */,
+				FF8A19AF292F516900AEAA9A /* JokesModel.swift in Sources */,
 				FF8961EE293490A200BF8727 /* PinExtension.swift in Sources */,
 				FF8A19AC292F4AC700AEAA9A /* JokesViewModel.swift in Sources */,
-				FF12F75B293602F400157D62 /* DataProvider.swift in Sources */,
-				FF8961EB29346D9A00BF8727 /* JokesAPI.swift in Sources */,
-				FF87ED0E29399BB300CE930D /* FavoriteButton.swift in Sources */,
+				FF1667D329402F2900F36A07 /* JokesDataManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
